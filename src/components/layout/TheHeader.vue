@@ -19,7 +19,7 @@
 <style scoped>
 header {
   width: 90%;
-  height: 5rem;
+  height: 4rem;
   background-color: #ec3705;
   display: flex;
   justify-content: center;

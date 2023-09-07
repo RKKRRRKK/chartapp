@@ -1,14 +1,17 @@
 <template>
   <the-header></the-header>
+  <the-sidebar></the-sidebar>
   <router-view></router-view>
 </template>
 
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
+import TheSidebar from './components/layout/TheSidebar.vue';
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheSidebar
   }  
 }
 </script>
