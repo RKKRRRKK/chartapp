@@ -1,0 +1,11 @@
+<template>
+  <section>
+    Sidebar
+  </section>
+  <section>
+    Vizpane
+  </section>
+  <section>
+    Sheetmanager
+  </section>
+</template>
