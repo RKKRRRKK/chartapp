@@ -1,5 +1,5 @@
 <template>
-    <base-card>
+    <base-card mode="card">
     <li>
         <h4>{{ name }}</h4>
         <div class="actions">
@@ -13,13 +13,7 @@
 
 <script>
 export default {
-    props: ['id', 'name'],
-    computed: {
-        iframePath() {
-            return '/saved/' + this.id + '/frame'
-        }
-
-    }
+    props: ['name']
 }
 
 

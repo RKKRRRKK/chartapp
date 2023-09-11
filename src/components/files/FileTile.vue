@@ -1,5 +1,5 @@
 <template>
-    <base-card>
+    <base-card mode="outline">
     <li>
         <h4>{{ name }}</h4>
         <h5>{{ '(' + date +')'  }}</h5>

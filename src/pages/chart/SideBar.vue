@@ -11,6 +11,7 @@
         ></sheet-tile>
       </ul>
       <h3 v-else>No saved files.</h3>
+      <h4 class="add">+</h4>
     </div>
   </div>
 </template>
@@ -44,8 +45,8 @@ export default {
 }
 .sheets {
   background-color: #e06340;
-  height: 95%;
-  width: 85%;
+  height: 98%;
+  width: 90%;
   border-radius: 25px;
 }
 
@@ -57,4 +58,17 @@ ul {
     margin-left: 0.5rem;
 }
 
+.add {
+    text-align: center;
+    margin-top: -2.5rem;
+    font-size: 2rem;
+    color: #bf3813;
+    cursor: pointer;
+}
+
+.add:hover,
+.add:active,
+.add:focus {
+    color: #ff893a
+}
 </style>

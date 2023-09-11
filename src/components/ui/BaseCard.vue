@@ -1,18 +1,44 @@
 <template>
-    <div class="card">
+    <div :class="mode">
         <slot></slot>
     </div>
 </template>
 
+<script>
+export default {
+    props: {
+        mode:{
+            type: String,
+            required: false,
+            default: null,
+        },
+    }
+}
+</script>
+
 
 <style scoped>
+.outline {
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+    padding: 1rem;
+    max-width: 40rem;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.outline:hover {
+    background-color: rgb(239, 136, 98);
+}
+
 .card {
     border-radius: 1rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.26);
     padding: 1rem;
     max-width: 40rem;
     margin-bottom: 2rem;
-    background-color: rgb(237, 108, 61);
+    background-color:  rgb(237, 113, 4);
     cursor: pointer;
 }
 
