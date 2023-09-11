@@ -8,9 +8,12 @@
           :id="sheet.id"
           :name="sheet.name"
           :date="sheet.date"
+          @delete-file="deleteSheet"
         ></sheet-tile>
       </ul>
-      <base-button class='error' @click="createNewSheet" v-else>Create New Sheet</base-button>
+      <base-button class="error" @click="createNewSheet" v-else
+        >Create New Sheet</base-button
+      >
       <h4 v-if="hasSheets" class="add" @click="createNewSheet">+</h4>
     </div>
   </div>
@@ -29,22 +32,42 @@ export default {
     hasSheets() {
       return this.$store.getters['sheets/hasSheets'];
     },
+    getName() {
+      return this.$store.getters['sheets/getName'];
+    },
   },
   methods: {
     createNewSheet() {
+      const Name = this.getName;
+      const digits = Name.match(/\d+/g); // Extract digits from the string
+      let newNumber = 0; // Default number
+
+      if (digits && digits.length > 0) {
+        const lastNumber = parseInt(digits[digits.length - 1], 10);
+        newNumber = lastNumber + 1; // Increment by 1
+      }
+
+      const newName = `New Sheet ${newNumber}`; // Construct new name
+
       const newSheet = {
-        id: Date.now().toString()+ Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
-        name: 'New Sheet',
+        id:
+          Date.now().toString() +
+          Math.floor(Math.random() * 10000)
+            .toString()
+            .padStart(4, '0'),
+        name: newName,
         date: new Date().toISOString(),
       };
       this.$store.commit('sheets/addSheet', newSheet);
+    },
+    deleteSheet(id) {
+      this.$store.commit('sheets/deleteSheet', id);
     },
   },
 };
 </script>
 
 <style scoped>
-
 .error {
   margin: 1rem;
   font-size: 1rem;
