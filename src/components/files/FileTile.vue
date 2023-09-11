@@ -5,8 +5,9 @@
         <h5>{{ '(' + date +')'  }}</h5>
         <div class="actions">
             <base-button mode="outline" link to="/saved">open</base-button>
+            <base-button mode="outline" link to="/saved">edit</base-button>
             <base-button mode="outline" link :to="iframePath">i-frame</base-button>
-            <base-button mode="outline" link to="/saved">delete</base-button>
+            <base-button  link to="/saved">delete</base-button>
         </div>
     </li>
     </base-card>

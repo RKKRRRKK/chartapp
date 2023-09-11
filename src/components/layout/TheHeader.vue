@@ -33,14 +33,16 @@ header a {
   text-decoration: none;
   color: #ea8e74;
   display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid transparent;
+  padding: 0.5rem 1.5rem;
 }
 
 a:active,
 a:hover,
 a.router-link-active {
-  border: 2px solid #ea8e74;
+  border-bottom: 2.5px solid #ea8e74;
+  color: #f3af30;
+  border-color: #f3af30;
+  font-weight:bolder;
 }
 
 h1 {
@@ -95,5 +97,6 @@ li {
     margin-top: 0.25rem;
     text-align: center;
     padding-top: 12px;
+    border-radius: 50%;
 }
 </style>
