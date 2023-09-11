@@ -13,12 +13,15 @@
         </li>
       </ul>
     </nav>
+    <div class="login">
+      <div class="logo"></div>
+    </div>
   </header>
 </template>
 
 <style scoped>
 header {
-  width: 90%;
+  width: 100%;
   height: 4rem;
   background-color: #ec3705;
   display: flex;
@@ -74,5 +77,23 @@ header ul {
 
 li {
   margin: 0 0.5rem;
+}
+
+.login {
+    background-color: #dd3405;
+    width: 10%;
+    height: 4rem;
+}
+
+.logo {
+    background-color: orange;
+    width: 3rem;
+    height:3rem;
+    position: absolute;
+    right: 0px;
+    margin-right: 1rem;
+    margin-top: 0.25rem;
+    text-align: center;
+    padding-top: 12px;
 }
 </style>
