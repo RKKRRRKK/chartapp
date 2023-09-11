@@ -21,7 +21,7 @@
 
 <style scoped>
 header {
-  width: 100%;
+  width: 100vw;
   height: 4rem;
   background-color: #ec3705;
   display: flex;
@@ -61,7 +61,7 @@ h1 a.router-link-active {
 }
 
 header nav {
-  width: 90%;
+  width: 100vw;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -83,7 +83,7 @@ li {
 
 .login {
     background-color: #dd3405;
-    width: 10%;
+    width: 12vw;
     height: 4rem;
 }
 
