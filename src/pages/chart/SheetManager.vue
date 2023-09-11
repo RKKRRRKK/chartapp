@@ -1,17 +1,17 @@
 <template>
   <div class="rightsidebar">
     <div class="sheets">
-      <ul v-if="hasFiles">
+      <ul v-if="hasSheets">
         <sheet-tile
-          v-for="file in fileTiles"
-          :key="file.id"
-          :id="file.id"
-          :name="file.name"
-          :date="file.date"
+          v-for="sheet in Sheets"
+          :key="sheet.id"
+          :id="sheet.id"
+          :name="sheet.name"
+          :date="sheet.date"
         ></sheet-tile>
       </ul>
-      <h3 v-else>No saved files.</h3>
-      <h4 class="add">+</h4>
+      <base-button class='error' @click="createNewSheet" v-else>Create New Sheet</base-button>
+      <h4 v-if="hasSheets" class="add" @click="createNewSheet">+</h4>
     </div>
   </div>
 </template>
@@ -23,21 +23,37 @@ export default {
     SheetTile,
   },
   computed: {
-    fileTiles() {
-      return this.$store.getters['files/files'];
+    Sheets() {
+      return this.$store.getters['sheets/sheets'];
     },
-    hasFiles() {
-      return this.$store.getters['files/hasFiles'];
+    hasSheets() {
+      return this.$store.getters['sheets/hasSheets'];
+    },
+  },
+  methods: {
+    createNewSheet() {
+      const newSheet = {
+        id: Date.now().toString()+ Math.floor(Math.random() * 10000).toString().padStart(4, '0'),
+        name: 'New Sheet',
+        date: new Date().toISOString(),
+      };
+      this.$store.commit('sheets/addSheet', newSheet);
     },
   },
 };
 </script>
 
 <style scoped>
+
+.error {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
 .rightsidebar {
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   position: relative;
   background-color: #ea9a84;
   height: 100vh;
@@ -50,24 +66,24 @@ export default {
 }
 
 ul {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    width: 90%;
-    margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 90%;
+  margin-left: 0.5rem;
 }
 
 .add {
-    text-align: center;
-    margin-top: -2.5rem;
-    font-size: 2rem;
-    color: #bf3813;
-    cursor: pointer;
+  text-align: center;
+  margin-top: -2.5rem;
+  font-size: 2rem;
+  color: #bf3813;
+  cursor: pointer;
 }
 
 .add:hover,
 .add:active,
 .add:focus {
-    color: #ff893a
+  color: #ff893a;
 }
 </style>

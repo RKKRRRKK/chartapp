@@ -9,6 +9,8 @@ import SmallButton from './components/ui/SmallButton.vue';
 
 const app = createApp(App)
 
+console.log("Registered mutations",store._mutations);
+
 app.use(router);
 app.use(store);
 
