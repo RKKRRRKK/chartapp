@@ -33,23 +33,23 @@ export default {
 button,
 a {
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 0.5rem;
   font: inherit;
   background-color: #ec3705;
   border: 1px solid #ec3705;
   color: white;
   cursor: pointer;
-  border-radius: 2rem;
-  margin-right: 0.5rem;
-  display: inline-block;
+  display: flex;
+  border-radius: 0.5rem;
+  justify-content: space-between;
 }
 
 a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #ec3705;
-  border-color: #ec3705;
+  background-color: #ff9e02;
+  border-color: #ff9e02;
 }
 
 .flat {
@@ -60,8 +60,8 @@ button:active {
 
 .outline {
   background-color: transparent;
-  border-color: #ec3705;
-  color: #ec3705;
+  border-color: #c56008;
+  color: #c56008;
 }
 
 .flat:hover,

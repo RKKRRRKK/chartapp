@@ -30,23 +30,23 @@ export default {
 <style scoped>
 li {
     list-style-type: none;
-    width: 50vh;
+    width: 100%;
 }
 h4 {
     text-align: left;
-    margin: 0px;
-    font-size: 20px;
+    margin: 0;
+    font-size: 1rem;
 }
 
 h5 {
-    margin-bottom: 20px;
-    margin-top: 1px;
-    font-size: 12px;
+    margin-bottom: 1rem;
+    margin-top: 0.1rem;
+    font-size: 0.6rem;
     text-align: left;
 }
 
 .actions {
-    font-size: 10px;
+    font-size: 0.6rem;
 }
 
 div {
