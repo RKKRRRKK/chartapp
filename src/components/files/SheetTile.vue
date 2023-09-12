@@ -1,5 +1,5 @@
 <template>
-  <base-card mode="card">
+  <base-card :mode="card">
     <li>
       <h4>{{ name }}</h4>
       <div class="actions">
@@ -18,8 +18,23 @@ export default {
 methods: {
     deleteFile() {
         this.$emit('delete-file', this.id);
+    },
+    checkActive() {
+        const isActive = this.$store.getters['sheets/getActive'];
+      console.log("Parent checkActive getter:", isActive);
+      return isActive;
     }
-}}
+},
+computed: {
+    card() {
+      const card = this.checkActive() ? 'active' : 'card';
+      console.log("parent card computed property:", card )
+      return card;
+    }
+  },
+
+
+}
 </script>
 
 <style scoped>

@@ -11,4 +11,7 @@ export default {
 
 
 <style scoped>
+div {
+    background-color: black;
+}
 </style>

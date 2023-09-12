@@ -57,8 +57,11 @@ export default {
             .padStart(4, '0'),
         name: newName,
         date: new Date().toISOString(),
+        active: null,
       };
       this.$store.commit('sheets/addSheet', newSheet);
+      this.$store.commit('sheets/toggleActive', {id: newSheet.id});
+
       this.$store.commit('graphs/toggleDeselect');
     },
 

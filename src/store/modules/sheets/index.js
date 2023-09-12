@@ -11,6 +11,7 @@ export default {
           id: '1',
           name: 'New Sheet 1',
           date: '12.12.2023',
+          active: true,
         },
       ],
     };

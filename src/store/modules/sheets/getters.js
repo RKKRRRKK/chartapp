@@ -7,5 +7,11 @@ export default {
     },
     getName(state) {
         return state.sheets.length > 0 ? state.sheets[state.sheets.length - 1].name : 'New Sheet 1';
+    },
+    getActive(state) {
+        const activeSheet = state.sheets.find(sheet => sheet.active);
+        const active = activeSheet ? activeSheet.active : false;
+        console.log('getter', active);
+        return active;
     }
 }; 
