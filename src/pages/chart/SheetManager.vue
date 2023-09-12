@@ -59,7 +59,9 @@ export default {
         date: new Date().toISOString(),
       };
       this.$store.commit('sheets/addSheet', newSheet);
+      this.$store.commit('graphs/toggleDeselect');
     },
+
     deleteSheet(id) {
       this.$store.commit('sheets/deleteSheet', id);
     },

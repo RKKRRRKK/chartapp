@@ -9,19 +9,19 @@ export default {
       graphs: [
         {
           id: 1,
-          selected: False,
+          selected: false,
         },
         {
           id: 2,
-          selected: False,
+          selected: false,
         },
         {
           id: 3,
-          selected: False,
+          selected: false,
         },
         {
           id: 4,
-          selected: False,
+          selected: false,
         },
       ],
     };
