@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <base-card class="card" mode="card"></base-card>
-    <base-card class="card" mode="card"></base-card>
-    <base-card class="card" mode="card"></base-card>
-    <base-card class="card" mode="card"></base-card>
+    <base-card class="graph1" mode="outline" @click="toggleSelected"></base-card>
+    <base-card class="graph2" mode="outline" @click="toggleSelected"></base-card>
+    <base-card class="graph3" mode="outline" @click="toggleSelected"></base-card>
+    <base-card class="graph4" mode="outline" @click="toggleSelected"></base-card>
   </div>
 </template>
 
@@ -13,6 +13,14 @@ export default {
   components: {
     BaseCard,
   },
+    props: ['id','name'],
+
+    methods: {
+    toggleSelected() {
+        vizSelected = True
+        
+    }
+}
 };
 </script>
 
@@ -32,7 +40,10 @@ export default {
     linear-gradient(to bottom, rgb(245, 235, 235) 1px, transparent 1px);
 }
 
-.card {
+.graph1,
+.graph2,
+.graph3,
+.graph4 {
     height: 40%;
     width: 40%;
 }

@@ -9,7 +9,7 @@ export default {
       sheets: [
         {
           id: '1',
-          name: 'newsheet1',
+          name: 'New Sheet 1',
           date: '12.12.2023',
         },
       ],
