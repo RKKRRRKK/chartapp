@@ -2,7 +2,11 @@
   <div class="container">
     <div class="sankey" id="sankey_chart">
       <GChart
-      v-if="formattedChartData && formattedChartData.length > 1"
+        v-if="
+          googleChartsLoaded &&
+          formattedChartData &&
+          formattedChartData.length > 1
+        "
         type="Sankey"
         :data="formattedChartData"
         :options="chartOptions"
@@ -12,31 +16,54 @@
 </template>
 
 <script>
-
 export default {
+  mounted() {
+    console.log('Component mounted');
+    this.$nextTick(() => {
+      if (window.google && window.google.charts) {
+        console.log('Google charts exist');
+        window.google.charts.load('current', {
+          packages: ['sankey'],
+        });
+        window.google.charts.setOnLoadCallback(() => {
+          this.googleChartsLoaded = true;
+          console.log('Google charts loaded:', this.googleChartsLoaded);
+          this.$nextTick(() => {
+            console.log('After nextTick');
+          });
+        });
+      } else {
+        console.log('Google charts do not exist');
+      }
+    });
+  },
 
   computed: {
-    // Get the active sheet from the Vuex store
     activeSheet() {
-      return this.$store.state.sheets.sheets.find((sheet) => sheet.active);
+      const sheet = this.$store.state.sheets.sheets.find(
+        (sheet) => sheet.active
+      );
+      console.log('Active sheet:', sheet);
+      return sheet;
     },
-    // Format the chart data based on the active sheet
     formattedChartData() {
       if (this.activeSheet && this.activeSheet.inputData.length > 0) {
         const header = [['From', 'To', 'Weight']];
         const rows = this.activeSheet.inputData;
+        console.log('Formatted chart data:', header.concat(rows));
         return header.concat(rows);
       }
+      console.log('No formatted chart data');
       return [];
     },
   },
   data() {
     return {
       chartOptions: {
-        // Set chart options here
         width: 1200,
         height: 800,
       },
+      googleChartsLoaded: false,
     };
   },
 };
