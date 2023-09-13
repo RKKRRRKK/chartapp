@@ -10,7 +10,7 @@ export default {
     },
     getActive(state) {
         const activeSheet = state.sheets.find(sheet => sheet.active);
-        const active = activeSheet ? activeSheet.active : false;
+        const active = activeSheet ? activeSheet.id : false;
         console.log('getter', active);
         return active;
     }

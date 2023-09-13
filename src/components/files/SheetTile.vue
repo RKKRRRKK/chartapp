@@ -19,22 +19,17 @@ methods: {
     deleteFile() {
         this.$emit('delete-file', this.id);
     },
-    checkActive() {
-        const isActive = this.$store.getters['sheets/getActive'];
-      console.log("Parent checkActive getter:", isActive);
-      return isActive;
-    }
 },
 computed: {
     card() {
-      const card = this.checkActive() ? 'active' : 'card';
-      console.log("parent card computed property:", card )
-      return card;
-    }
-  },
+    const activeSheetId = this.$store.getters['sheets/getActive']; // Using the modified getter
+    const card = (this.id === activeSheetId) ? 'active' : 'card'; // Compare with own ID
+    return card;
+  }
+},
+  };
 
 
-}
 </script>
 
 <style scoped>
