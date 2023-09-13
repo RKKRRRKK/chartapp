@@ -1,5 +1,5 @@
 <template>
-  <base-card :mode="card">
+  <base-card :mode="card" @click="toggleActive">
     <li>
       <h4>{{ name }}</h4>
       <div class="actions">
@@ -19,6 +19,10 @@ methods: {
     deleteFile() {
         this.$emit('delete-file', this.id);
     },
+    toggleActive () {
+        this.$store.commit('sheets/toggleActive', {id: this.id});
+        console.log('CHECK THIS ID' + this.id);
+    }
 },
 computed: {
     card() {
