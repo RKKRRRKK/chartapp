@@ -34,7 +34,7 @@ export default {
 section {
   display: flex;
   justify-content: center;
-  height: 100vh; /* 100% of the viewport height */
+  height: 100vh;
 }
 
 </style>

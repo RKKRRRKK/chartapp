@@ -6,7 +6,7 @@ export default {
         const activeSheet = state.sheets.find(sheet => sheet.active === true);
 
         if (state.sheets.length === 0) {
-            console.log("No sheets available. Terminating.");
+            console.log("No sheets available. Returning from recursion.");
             return;
           }
         
@@ -32,6 +32,15 @@ export default {
           commit('SET_SHEET_ACTIVE_BY_INDEX', highestIndex);
         }
       },
+
+      updateInputData({ commit, state }, data) {
+        // Find the active sheet
+        const activeSheet = state.sheets.find(sheet => sheet.active);
+        if (activeSheet) {
+          commit('SET_INPUT_DATA', { data, sheetId: activeSheet.id });
+        }
+      }
+      
 
 
 };

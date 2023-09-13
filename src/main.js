@@ -1,4 +1,6 @@
 import { createApp } from 'vue';
+import { GChart } from 'vue-google-charts';
+
 
 import router from './router.js';
 import store from './store/index.js';
@@ -17,5 +19,6 @@ app.use(store);
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);
 app.component('small-button', SmallButton);
+app.component('Gchart', GChart)
 
 app.mount('#app');

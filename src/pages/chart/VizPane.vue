@@ -38,13 +38,6 @@ export default {
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-content: flex-start;
-  background-size: 40px 40px;
-  background-image: linear-gradient(
-      to right,
-      rgb(245, 235, 235) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgb(245, 235, 235) 1px, transparent 1px);
 }
 
 .graph1,

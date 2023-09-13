@@ -60,7 +60,7 @@ export default {
         active: null,
         state: null, //name of chart if clicked
         input: null, //true or false, checks if there is a chart data stored
-        inputData: {}, //saved chart data
+        inputData: [], //saved chart data
         save: null, //true or false, checks if sheet was saved
       };
       this.$store.commit('sheets/addSheet', newSheet);

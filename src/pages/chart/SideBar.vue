@@ -1,11 +1,61 @@
 <template>
   <div class="container">
-    <div class="input"></div>
+    <div class="input">
+      <!-- File Input and Button -->
+      <input
+        style="display: none"
+        type="file"
+        ref="fileInput"
+        @change="handleFileUpload"
+      />
+      <base-button v-show="state" @click="upload">Upload</base-button>
+    </div>
     <div class="toolbar"></div>
   </div>
 </template>
 
 <script>
+export default {
+
+  computed: {
+      state() {
+    return this.$store.getters['sheets/getState'];
+  }},
+
+  methods: {
+    handleFileUpload() {
+      const file = this.$refs.fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          // Parsing the CSV data
+          const csvData = e.target.result;
+          const lines = csvData.trim().split('\n');
+          const result = [];
+
+          for (let i = 1; i < lines.length; i++) {
+            const currentline = lines[i].split(',');
+            if (currentline.length >= 3) {
+              const from = currentline[0];
+              const to = currentline[1];
+              const value = parseInt(currentline[2], 10);
+              result.push([from, to, value]);
+            }
+          }
+
+          // Updating Vuex state
+          this.$store.dispatch('sheets/updateInputData', result);
+        };
+        reader.readAsText(file);
+      }
+    },
+
+    upload() {
+      this.$refs.fileInput.click();
+    },
+  },
+
+};
 </script>
 
 <style scoped>

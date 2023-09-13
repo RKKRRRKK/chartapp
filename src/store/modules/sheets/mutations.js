@@ -36,4 +36,13 @@ export default {
       console.log('Sheet should now be active:', state.sheets[index]);
     }
   },
+
+  SET_INPUT_DATA(state, { data, sheetId }) {
+    const sheet = state.sheets.find(s => s.id === sheetId);
+    if (sheet) {
+      sheet.inputData = data;
+      sheet.input = true;  // Set input to true to indicate data is stored
+    }
+  }
+
 };
