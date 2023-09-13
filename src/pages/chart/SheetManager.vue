@@ -58,6 +58,10 @@ export default {
         name: newName,
         date: new Date().toISOString(),
         active: null,
+        state: null,  //name of chart if clicked
+        input: null, //true or false, checks if there is a chart data stored
+        inputData: {}, //saved chart data
+        save: null, //true or false, checks if sheet was saved
       };
       this.$store.commit('sheets/addSheet', newSheet);
       this.$store.commit('sheets/toggleActive', {id: newSheet.id});
@@ -71,6 +75,13 @@ export default {
   },
 };
 </script>
+
+
+
+
+
+
+
 
 <style scoped>
 .error {

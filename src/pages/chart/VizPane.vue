@@ -23,8 +23,9 @@ export default {
   },
   methods: {
     toggleSelected(id) {
-      this.$store.commit('graphs/toggleSelected', { id })
-      console.log("type of selected (vizpane):" + typeof(id) +': '+ id);
+      this.$store.commit('graphs/toggleSelected', { id });
+      console.log('type of selected (vizpane):' + typeof id + ': ' + id);
+      this.$store.commit('sheets/assignChart', id);
     },
   },
 };

@@ -5,8 +5,16 @@ export default {
   deleteSheet(state, id) {
     state.sheets = state.sheets.filter((sheet) => sheet.id !== id);
   },
+
+  assignChart(state, id) {
+    const sheet = state.sheets.find((sheet) => sheet.active === true);
+    if (sheet) {
+      sheet.state = id;
+    }
+  },
+
   toggleActive(state, payload) {
-    console.log("Payload ID:", payload.id);
+    console.log('Payload ID:', payload.id);
     state.sheets.forEach((sheet) => {
       sheet.active = false;
     });
@@ -15,9 +23,9 @@ export default {
     if (sheet) {
       sheet.active = true;
     }
-    console.log("State of each sheet after potential activation:");
+    console.log('State of each sheet after potential activation:');
     state.sheets.forEach((sheet, index) => {
-      console.log("Sheet at index", index, ":", sheet);
+      console.log('Sheet at index', index, ':', sheet);
     });
   },
 };

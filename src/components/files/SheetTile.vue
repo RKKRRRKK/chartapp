@@ -22,6 +22,7 @@ methods: {
     toggleActive () {
         this.$store.commit('sheets/toggleActive', {id: this.id});
         console.log('CHECK THIS ID' + this.id);
+        this.$store.dispatch('sheets/checkAndUpdateSheetState');
     }
 },
 computed: {

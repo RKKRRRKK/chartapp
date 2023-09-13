@@ -59,6 +59,6 @@ export default {
   padding: 1rem;
   max-width: 40rem;
   margin-bottom: 2rem;
-  background-color: rgb(77, 2, 152);
+  background-color: rgb(237, 171, 66);
 }
 </style>
