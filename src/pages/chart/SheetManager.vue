@@ -58,30 +58,24 @@ export default {
         name: newName,
         date: new Date().toISOString(),
         active: null,
-        state: null,  //name of chart if clicked
+        state: null, //name of chart if clicked
         input: null, //true or false, checks if there is a chart data stored
         inputData: {}, //saved chart data
         save: null, //true or false, checks if sheet was saved
       };
       this.$store.commit('sheets/addSheet', newSheet);
-      this.$store.commit('sheets/toggleActive', {id: newSheet.id});
+      this.$store.commit('sheets/toggleActive', { id: newSheet.id });
 
       this.$store.commit('graphs/toggleDeselect');
     },
 
     deleteSheet(id) {
+      // Step 1: Find the index of the sheet with the given id
       this.$store.commit('sheets/deleteSheet', id);
     },
   },
 };
 </script>
-
-
-
-
-
-
-
 
 <style scoped>
 .error {

@@ -28,4 +28,12 @@ export default {
       console.log('Sheet at index', index, ':', sheet);
     });
   },
+
+  SET_SHEET_ACTIVE_BY_INDEX(state, index) {
+    console.log('SET_SHEET_ACTIVE_BY_INDEX called', index, state.sheets);
+    if (state.sheets[index]) {
+      state.sheets[index].active = true;
+      console.log('Sheet should now be active:', state.sheets[index]);
+    }
+  },
 };
