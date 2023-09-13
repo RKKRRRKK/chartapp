@@ -2,7 +2,7 @@
   <div class="sections">
     <side-bar class="sidebar"></side-bar>
     <viz-pane v-show="!selectedGraph" class="vizpane"> </viz-pane>
-    <sankey-chart v-show="selectedGraph === 1"></sankey-chart>
+    <sankey-chart v-show="selectedGraph ===1"></sankey-chart>
     <waterfall-chart v-show="selectedGraph === 2"></waterfall-chart>
     <other-chart v-show="selectedGraph === 3"></other-chart>
     <another-chart v-show="selectedGraph === 4"></another-chart>
@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     selectedGraph() {
-      return this.$store.getters['graphs/selectedGraph'];
+      return this.$store.getters['graphs/selectedGraphId'];
     },
   },
 };

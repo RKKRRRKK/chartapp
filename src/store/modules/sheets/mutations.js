@@ -15,5 +15,9 @@ export default {
     if (sheet) {
       sheet.active = true;
     }
+    console.log("State of each sheet after potential activation:");
+    state.sheets.forEach((sheet, index) => {
+      console.log("Sheet at index", index, ":", sheet);
+    });
   },
 };
