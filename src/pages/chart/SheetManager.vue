@@ -62,6 +62,13 @@ export default {
         input: null, //true or false, checks if there is a chart data stored
         inputData: [], //saved chart data
         save: null, //true or false, checks if sheet was saved
+        settings: {
+          nodePadding: 80,
+          nodeWidth: 10,
+          colors: ['#BBD8B3', '#F3B61F', '#A29F15', '#510D0A'],
+          colorMode: 'none', //source,target,gradient,none
+          fontSize: null, //fontsize of label
+        },
       };
       this.$store.commit('sheets/addSheet', newSheet);
       this.$store.commit('sheets/toggleActive', { id: newSheet.id });
@@ -120,3 +127,4 @@ ul {
   color: #ff893a;
 }
 </style>
+

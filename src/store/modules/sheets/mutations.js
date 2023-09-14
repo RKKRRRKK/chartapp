@@ -43,6 +43,27 @@ export default {
       sheet.inputData = data;
       sheet.input = true;  // Set input to true to indicate data is stored
     }
-  }
+  },
+
+  SET_NODE_PADDING(state, newPadding ) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.nodePadding = newPadding;
+    }
+  },
+  
+  SET_FONT_SIZE(state, newSize ) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.fontSize = newSize;
+    }
+  },
+
+  SET_NODE_WIDTH(state, newWidth ) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.nodeWidth = newWidth;
+    }
+  },
 
 };
