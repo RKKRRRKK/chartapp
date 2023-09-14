@@ -6,7 +6,7 @@
         style="display: none"
         type="file"
         ref="fileInput"
-        @change="handleFileUpload"
+        @input="handleFileUpload"
       />
       <base-button v-show="state" @click="upload">Upload</base-button>
     </div>
@@ -40,6 +40,7 @@ export default {
               const to = currentline[1];
               const value = parseInt(currentline[2], 10);
               result.push([from, to, value]);
+              this.$refs.fileInput.value = null;
             }
           }
 
