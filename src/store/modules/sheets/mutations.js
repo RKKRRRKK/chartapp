@@ -66,4 +66,11 @@ export default {
     }
   },
 
+  SET_COLOR_MODE(state, newColor ) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.colorMode = newColor;
+    }
+  },
+
 };

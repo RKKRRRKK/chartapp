@@ -55,4 +55,7 @@ export default {
   updateNodeWidth({ commit }, newWidth) {
     commit('SET_NODE_WIDTH',  newWidth );
   },
+  updateColorMode({ commit }, newColor) {
+    commit('SET_COLOR_MODE',  newColor );
+  },
 };
