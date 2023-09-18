@@ -33,11 +33,14 @@ export default {
   align-items: center;
   margin-top: 2.5rem;
   border-radius: 2.5rem;
+
+  
 }
 
 .settings {
   height: 50%;
   width: 100%;
+  
 }
 
 </style>

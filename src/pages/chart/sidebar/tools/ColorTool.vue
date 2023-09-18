@@ -1,25 +1,29 @@
 <template>
   <div class="colorsets">
-    <label for="numberColors">Number of Colors:</label>
+    <div class="rows">
+    <label class="label" for="numberColors">Number of Colors:</label>
     <input
       id="numberColors"
       type="number"
       v-model="numberColors"
       @input="updateNumber"
+      class="input"
     />
 
-    <label for="defaultColor">Base Color:</label>
+    <label class="label" for="defaultColor">Base Color:</label>
     <input
       id="defaultColor"
       type="color"
       v-model="defaultColor"
       @input="updateBase"
+      class="picker"
     />
+    </div>
 
-    <base-button class="padd" @click="gencom()"
+    <base-button class="padd" @click="gencom()" mode="animate-click"
       >Complementary pallete</base-button
     >
-    <base-button @click="genanal()" class="button"
+    <base-button @click="genanal()" mode="animate-click"
       >Analogous pallete</base-button
     >
   </div>
@@ -209,5 +213,36 @@ export default {
 
 .padd{
     margin-top:1rem;
+    margin-bottom:0.5rem;
+}
+
+.input {
+  border-radius: 0.5rem;
+  border-color: #ea9a84;
+  border-width: 0;
+  background-color: #edc2b7;
+  padding: 0rem;
+  width: 3rem;
+  text-align: center;
+  
+}
+
+.picker {
+    border-radius: 0.5rem;
+    border-color: #ea9a84;
+    background-color: #ea9a84;
+    cursor: pointer;
+}
+
+.rows {
+    display: flex;
+    flex-direction: row;
+    margin-left: -1rem;
+}
+
+.label {
+    font-size: 14px;
+    padding-right: 0.2rem;
+    padding-left: 1rem;
 }
 </style>

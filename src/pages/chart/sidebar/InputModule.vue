@@ -82,5 +82,8 @@ export default {
   padding: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.26);
+  color: black;
+  font-weight: bold;
 }
 </style>

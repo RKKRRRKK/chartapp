@@ -61,4 +61,7 @@ export default {
   margin-bottom: 2rem;
   background-color: rgb(237, 171, 66);
 }
+
+
+
 </style>
