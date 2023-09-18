@@ -20,12 +20,14 @@ export default {
             nodePadding: 80,
             nodeWidth: 10,
             colors: [
-              '#BBD8B3',         
-              '#F3B61F',         
-              '#A29F15',        
-              '#510D0A'], 
-            colorMode: 'none', //source,target,gradient,none
+              'red',         
+              'green',         
+              'blue',        
+              'yellow'], 
+            colorMode: "none", //source,target,gradient,none
             fontSize: 12, //fontsize of label
+            numberColors: 6, //number of colors
+            baseColor: [0,100,50],
 
           }, 
         },

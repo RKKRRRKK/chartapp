@@ -73,4 +73,18 @@ export default {
     }
   },
 
+  UPDATE_NUMBER_COLORS(state,newNumber) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.numberColors = newNumber;
+    }
+  },
+
+  UPDATE_COLOR_ARRAY(state,newColors) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.colors = newColors;
+    }
+  }
+
 };

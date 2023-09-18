@@ -19,5 +19,11 @@ export default {
         const activeSheetAndGraph = state.sheets.find(sheet => sheet.active && sheet.state);
         const active = activeSheetAndGraph ? true : false;
         return active;
+    },
+
+    
+    getActiveSheet(state) {
+        const activeSheetAndGraph = state.sheets.find(sheet => sheet.active && sheet.state);
+        return activeSheetAndGraph
     }
 }; 

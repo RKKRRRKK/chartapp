@@ -58,4 +58,12 @@ export default {
   updateColorMode({ commit }, newColor) {
     commit('SET_COLOR_MODE',  newColor );
   },
+
+  updateNumberColors({commit}, newNumber) {
+    commit('UPDATE_NUMBER_COLORS', newNumber);
+  },
+
+  updateColors({commit}, newColors) {
+    commit('UPDATE_COLOR_ARRAY', newColors);
+  }
 };
