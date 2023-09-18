@@ -65,5 +65,9 @@ export default {
 
   updateColors({commit}, newColors) {
     commit('UPDATE_COLOR_ARRAY', newColors);
+  },
+
+  updateBase({commit}, newBase) {
+    commit('UPDATE_BASE_COLOR', newBase)
   }
 };

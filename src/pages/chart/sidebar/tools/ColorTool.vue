@@ -1,11 +1,16 @@
 <template>
   <div class="container">
-    <small-button @click="genrand()" class="button">generate pallete</small-button>
+    <small-button @click="gencom()" class="button"
+      >generate complementary pallete</small-button
+    >
+    <small-button @click="genanal()" class="button"
+      >generate analog pallete</small-button
+    >
   </div>
-  <input type="number" v-model="numberColors" @input="updateNumber"/>
+
+  <input type="number" v-model="numberColors" @input="updateNumber" />
+  <input type="color" v-model="defaultColor" @input="updateBase" />
 </template>
-
-
 
 <script>
 export default {
@@ -63,8 +68,51 @@ export default {
       return '#' + r + g + b;
     },
 
-    genrand() {
-        console.log("genrand triggered");
+    hexToHSL(hex) {
+      hex = hex.replace('#', '');
+
+      const r = parseInt(hex.substring(0, 2), 16);
+      const g = parseInt(hex.substring(2, 4), 16);
+      const b = parseInt(hex.substring(4, 6), 16);
+
+      const rNormalized = r / 255;
+      const gNormalized = g / 255;
+      const bNormalized = b / 255;
+
+      const min = Math.min(rNormalized, gNormalized, bNormalized);
+      const max = Math.max(rNormalized, gNormalized, bNormalized);
+      const delta = max - min;
+
+      let h, s, l;
+      l = (max + min) / 2;
+      if (delta === 0) {
+        s = 0;
+        h = 0;
+      } else {
+        s = delta / (1 - Math.abs(2 * l - 1));
+
+        if (max === rNormalized) {
+          h = 60 * (((gNormalized - bNormalized) / delta) % 6);
+        } else if (max === gNormalized) {
+          h = 60 * ((bNormalized - rNormalized) / delta + 2);
+        } else {
+          h = 60 * ((rNormalized - gNormalized) / delta + 4);
+        }
+      }
+
+      if (h < 0) {
+        h += 360;
+      }
+
+      h = Math.round(h);
+      s = Math.round(s * 100);
+      l = Math.round(l * 100);
+
+      return [h, s, l];
+    },
+
+    gencom() {
+      console.log('genrand triggered');
       let baseColor = this.state.settings.baseColor;
       let quantity = this.state.settings.numberColors;
       let complementaryColors = [];
@@ -73,29 +121,47 @@ export default {
         let hue = (baseColor[0] + (i * 360) / quantity) % 360;
         let saturation = baseColor[1];
         let lightness = baseColor[2];
-        let hsl = this.hslToHex(hue,saturation,lightness);
+        let hsl = this.hslToHex(hue, saturation, lightness);
 
         complementaryColors.push(hsl);
       }
       this.$store.dispatch('sheets/updateColors', complementaryColors);
-        console.log("log colors", complementaryColors)
+      console.log('log com colors', complementaryColors);
+    },
+    genanal() {
+      let baseColor = this.state.settings.baseColor;
+      let quantity = this.state.settings.numberColors;
+      let analogousColors = [];
+
+      let [baseHue, baseSat, baseLight] = baseColor;
+
+      let step = 25;
+      for (let i = 0; i < quantity; i++) {
+        let newHue = (baseHue + i * step) % 360;
+        let newColor = this.hslToHex(newHue, baseSat, baseLight);
+        analogousColors.push(newColor);
+      }
+      this.$store.dispatch('sheets/updateColors', analogousColors);
+      console.log('log anal colors', analogousColors);
     },
 
     updateNumber() {
-      console.log("number before: ", this.state.settings.numberColors)
+      console.log('number before: ', this.state.settings.numberColors);
       this.$store.dispatch('sheets/updateNumberColors', this.numberColors);
-      console.log("number after: ", this.state.settings.numberColors)
+      console.log('number after: ', this.state.settings.numberColors);
+    },
+
+    updateBase() {
+      let converted = this.hexToHSL(this.defaultColor);
+      this.$store.dispatch('sheets/updateBase', converted);
     },
   },
 };
 </script>
 
 <style scoped>
-
 .container {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
-
 </style>

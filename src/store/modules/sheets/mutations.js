@@ -85,6 +85,14 @@ export default {
     if (sheet) {
       sheet.settings.colors = newColors;
     }
+  },
+
+  UPDATE_BASE_COLOR(state,newBase) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    if (sheet) {
+      sheet.settings.baseColor = newBase
+    }
+
   }
 
 };
