@@ -16,11 +16,11 @@
       @input="updateBase"
     />
 
-    <small-button @click="gencom()" class="button"
-      >generate complementary pallete</small-button
+    <base-button class="padd" @click="gencom()"
+      >Complementary pallete</base-button
     >
-    <small-button @click="genanal()" class="button"
-      >generate analog pallete</small-button
+    <base-button @click="genanal()" class="button"
+      >Analogous pallete</base-button
     >
   </div>
 </template>
@@ -205,5 +205,9 @@ export default {
 .colorsets{
     display: flex;
     flex-direction: column;
+}
+
+.padd{
+    margin-top:1rem;
 }
 </style>
