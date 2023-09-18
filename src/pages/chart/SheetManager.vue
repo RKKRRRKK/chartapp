@@ -68,7 +68,7 @@ export default {
           colors: ['#BBD8B3', '#F3B61F', '#A29F15', '#510D0A'],
           colorMode: 'none', //source,target,gradient,none
           fontSize: null, //fontsize of label
-          numberColors: 6,
+          numberColors: null,
           baseColor: [0,100,50],
         },
       };

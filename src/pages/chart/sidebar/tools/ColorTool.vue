@@ -1,5 +1,21 @@
 <template>
-  <div class="container">
+  <div class="colorsets">
+    <label for="numberColors">Number of Colors:</label>
+    <input
+      id="numberColors"
+      type="number"
+      v-model="numberColors"
+      @input="updateNumber"
+    />
+
+    <label for="defaultColor">Base Color:</label>
+    <input
+      id="defaultColor"
+      type="color"
+      v-model="defaultColor"
+      @input="updateBase"
+    />
+
     <small-button @click="gencom()" class="button"
       >generate complementary pallete</small-button
     >
@@ -7,14 +23,28 @@
       >generate analog pallete</small-button
     >
   </div>
-
-  <input type="number" v-model="numberColors" @input="updateNumber" />
-  <input type="color" v-model="defaultColor" @input="updateBase" />
 </template>
 
 <script>
 export default {
+
+    data() {
+    return {
+        numberColors: this.getInitialNumberColors()
+    };},
+
+    watch: {
+    'state.settings.numberColors': function(newVal) {
+      this.numberColors = newVal || null;
+    },
+  },
+  created() {
+    // Initialize numberColors when component is created
+    this.numberColors = this.getInitialNumberColors();
+  },
+
   computed: {
+
     state() {
       return this.$store.getters['sheets/getActiveSheet'];
     },
@@ -135,7 +165,15 @@ export default {
 
       let [baseHue, baseSat, baseLight] = baseColor;
 
-      let step = 25;
+      let step;
+      if (quantity <= 4) {
+        step = 30;
+      } else if (quantity > 4 && quantity <= 7) {
+        step = 20;
+      } else {
+        step = 15;
+      }
+
       for (let i = 0; i < quantity; i++) {
         let newHue = (baseHue + i * step) % 360;
         let newColor = this.hslToHex(newHue, baseSat, baseLight);
@@ -155,13 +193,17 @@ export default {
       let converted = this.hexToHSL(this.defaultColor);
       this.$store.dispatch('sheets/updateBase', converted);
     },
+    getInitialNumberColors() {
+      return this.state?.settings?.numberColors || null;
+    },
   },
 };
 </script>
 
 <style scoped>
-.container {
-  width: 100%;
-  height: 100%;
+
+.colorsets{
+    display: flex;
+    flex-direction: column;
 }
 </style>

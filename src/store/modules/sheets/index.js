@@ -26,7 +26,7 @@ export default {
               'yellow'], 
             colorMode: "none", //source,target,gradient,none
             fontSize: 12, //fontsize of label
-            numberColors: 6, //number of colors
+            numberColors: null, //number of colors
             baseColor: [0,100,50],
 
           }, 

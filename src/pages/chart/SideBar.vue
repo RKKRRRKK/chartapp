@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <input-module></input-module>
-    <tool-bar></tool-bar>
+  <div class="parent">
+    <div class="container">
+      <input-module class="input"></input-module>
+      <tool-bar class="settings"></tool-bar>
+    </div>
   </div>
 </template>
 
@@ -18,5 +20,24 @@ export default {
 </script>
 
 <style scoped>
+.parent {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-color: #d78068;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2.5rem;
+  border-radius: 2.5rem;
+}
+
+.settings {
+  height: 50%;
+  width: 100%;
+}
 
 </style>

@@ -1,20 +1,25 @@
 <template>
   <div class="container">
-    <div class="toolbar">
+    <div v-show="state" class="toolbar">
+      <h3>Size Settings</h3>
       <div v-show="state">
-        change padding
-        <input type="number" v-model="nodePadding" @input="updatePadding" />
+        Padding
+        <input type="range" v-model="nodePadding" @input="updatePadding" />
       </div>
       <div v-show="state">
-        change font size
-        <input type="number" v-model="fontSize" @input="updateFont" />
+        Node Width
+        <input type="range" v-model="nodeWidth" @input="updateNode" />
       </div>
       <div v-show="state">
-        change node width
-        <input type="number" v-model="nodeWidth" @input="updateNode" />
+        Font
+        <input type="number" v-model="fontSize" @input="updateFont"/>
       </div>
-      <div v-show="state">
-        change color mode
+      <div class="colortool" v-show="state">
+        <h3>Color Settings</h3>
+        <color-tool></color-tool>
+      </div>
+      <div class="colormode" v-show="state">
+      <h3>change color mode</h3>
         <label>
           <input type="radio" v-model="colorMode" id="source" value="source" />
           Source
@@ -37,9 +42,6 @@
           None
         </label>
       </div>
-      <div v-show="state">
-        <color-tool></color-tool>
-      </div>
     </div>
   </div>
 </template>
@@ -54,6 +56,7 @@ export default {
   data() {
     return {
       colorMode: 'none',
+      fontSize: 12,
     };
   },
 
@@ -65,7 +68,7 @@ export default {
 
   methods: {
     updatePadding() {
-      this.$store.dispatch('sheets/updateNodePadding', this.nodePadding * 5);
+      this.$store.dispatch('sheets/updateNodePadding', this.nodePadding * 2.5);
     },
     updateFont() {
       this.$store.dispatch('sheets/updateFontSize', this.fontSize);
@@ -89,12 +92,24 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;  /* Horizontal centering */
+  justify-content: flex-start; /* Vertical start, could be 'center' if you like */
+  height: 100vh;  /* Full viewport height */
 }
 
 .toolbar {
   background-color: #df481f;
-  width: 80%;
-  height: 15rem;
-  margin: 2rem;
+  width: 90%;
+  max-width: 500px;  /* Optional, max-width to avoid an overly wide toolbar */
+  border-radius: 2rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+
+.colormode {
+  display: flex;
+  flex-direction: column;
 }
 </style>
