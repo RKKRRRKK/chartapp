@@ -13,7 +13,7 @@ export default {
           date: '12.12.2023',
           active: true,
           state: null,  //id of chart if clicked
-          input: null, //true or false, checks if there is a chart data stored
+          input: null, //true or false, checks if input is loading, null if there is no input
           inputData: [], //saved chart input data
           save: null, //true or false, checks if sheet was saved
           settings: {             //saved chart settings data

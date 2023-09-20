@@ -9,6 +9,8 @@ import App from './App.vue';
 import BaseCard from './components/ui/BaseCard.vue';
 import BaseButton from './components/ui/BaseButton.vue';
 import SmallButton from './components/ui/SmallButton.vue';
+import BaseDialog from './components/ui/BaseDialog.vue';
+import BaseSpinner from './components/ui/BaseSpinner.vue';
 
 const app = createApp(App)
 
@@ -20,6 +22,9 @@ app.use(store);
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);
 app.component('small-button', SmallButton);
-app.component('GChart', GChart)
+app.component('GChart', GChart);
+app.component('base-dialog', BaseDialog);
+app.component('base-spinner', BaseSpinner);
+
 
 app.mount('#app');

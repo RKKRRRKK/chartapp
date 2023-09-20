@@ -14,7 +14,9 @@
       </ul>
     </nav>
     <div class="login">
-      <div class="logo"></div>
+      <div class="logo">
+        <router-link to="/auth">Click</router-link>
+      </div>
     </div>
   </header>
 </template>

@@ -25,6 +25,8 @@ export default {
 
   methods: {
     handleFileUpload() {
+      this.$store.dispatch('sheets/isLoading', true);
+      console.log("handlefileupload triggered");
       const file = this.$refs.fileInput.files[0];
       if (file) {
         const reader = new FileReader();

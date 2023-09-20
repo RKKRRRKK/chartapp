@@ -10,18 +10,22 @@ export default {
         {
           id: 1,
           selected: false,
+          implemented: true,
         },
         {
           id: 2,
           selected: false,
+          implemented: false,
         },
         {
           id: 3,
           selected: false,
+          implemented: false,
         },
         {
           id: 4,
           selected: false,
+          implemented: false,
         },
       ],
     };

@@ -1,8 +1,12 @@
 <template>
   <div class="container">
     <div class="sankey" id="sankey_chart">
+      <!-- Show spinner while loading -->
+      <base-spinner class="spinner" v-if="isLoading"></base-spinner>
+
       <GChart
         v-if="
+          !isLoading &&
           googleChartsLoaded &&
           formattedChartData &&
           formattedChartData.length > 1
@@ -17,21 +21,22 @@
 
 <script>
 export default {
+  data() {
+    return {
+      googleChartsLoaded: false,
+    };
+  },
   mounted() {
     this.$nextTick(() => {
       if (window.google && window.google.charts) {
-        //console.log('Google charts exist');
         window.google.charts.load('current', {
           packages: ['sankey'],
         });
         window.google.charts.setOnLoadCallback(() => {
           this.googleChartsLoaded = true;
-          // console.log('Google charts loaded:', this.googleChartsLoaded);
           this.$nextTick(() => {});
         });
-      } else {
-        // console.log('Google charts do not exist');
-      }
+      } 
     });
   },
 
@@ -111,6 +116,31 @@ export default {
         googleChartsLoaded: false,
       };
     },
+    isLoading() {
+      return this.activeSheet.input
+    },
+    hasInput() {
+      if (this.activeSheet && this.activeSheet.settings) {
+      return this.activeSheet.inputData}
+      return null
+    },
+
+  },
+  watch: {
+    isLoading(newVal) {
+      if (newVal === true) {
+        console.log("isLoading changed to true")
+        return true 
+      } 
+    },
+    hasInput(newVal) {
+      if (newVal) {
+        // inputData exists, so we can assume loading has finished
+        // Update the Vuex state to indicate loading has finished
+        this.$store.dispatch('sheets/isLoading', false);
+        console.log("hasInput triggered")
+      }
+    },
   },
 };
 </script>
@@ -134,5 +164,15 @@ export default {
   /* Your chart dimensions here; could be fixed or flexible */
   width: 80%; /* Example */
   height: 80%; /* Example */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -25rem;
 }
+
+.spinner {
+  transform: scale(4)
+}
+
+
 </style>

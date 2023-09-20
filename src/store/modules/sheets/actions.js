@@ -69,5 +69,9 @@ export default {
 
   updateBase({commit}, newBase) {
     commit('UPDATE_BASE_COLOR', newBase)
+  },
+
+  isLoading({commit}, newState) {
+    commit('UPDATE_LOAD_STATE', newState)
   }
 };

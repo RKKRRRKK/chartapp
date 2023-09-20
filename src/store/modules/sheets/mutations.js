@@ -41,7 +41,7 @@ export default {
     const sheet = state.sheets.find(s => s.id === sheetId);
     if (sheet) {
       sheet.inputData = data;
-      sheet.input = true;  // Set input to true to indicate data is stored
+      //sheet.input = true;  //  do we need this???
     }
   },
 
@@ -93,6 +93,16 @@ export default {
       sheet.settings.baseColor = newBase
     }
 
+  },
+
+  UPDATE_LOAD_STATE(state,newState) {
+    const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
+    console.log(newState)
+    if (sheet) {
+      sheet.input = newState
+      console.log(newState)
+    }
   }
+
 
 };
