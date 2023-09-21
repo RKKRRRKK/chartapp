@@ -9,7 +9,7 @@
           <router-link to="/chart">Chart</router-link>
         </li>
         <li>
-          <router-link to="/saved">Saved</router-link>
+          <router-link to="/saved" @click="getFiles()">Saved</router-link>
         </li>
       </ul>
     </nav>
@@ -20,6 +20,25 @@
     </div>
   </header>
 </template>
+
+<script>
+export default {
+
+  methods: {
+    getFiles() {
+      this.$store.dispatch('sheets/fetchFiles');
+    }
+
+
+  }
+
+
+}
+
+</script>
+
+
+
 
 <style scoped>
 header {

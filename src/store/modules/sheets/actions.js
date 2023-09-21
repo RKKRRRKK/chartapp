@@ -125,13 +125,20 @@ export default {
       throw error;
     }
 
-    const requests = [];
+    const files = [];
 
     for (const key in responseData) {
-      requests.push(key);
+      const file = {
+        id: key,
+        userId: userId,
+        date: responseData[key].date,
+        name: responseData[key].name,
+        settings: responseData[key].settings,
+      };
+      files.push(file);
     }
 
-    context.commit('setRequests', requests);
+    context.commit('files/SET_FILES', files, {root:true});
   }
 
 
