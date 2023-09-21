@@ -26,9 +26,9 @@ methods: {
     },
     save () {
       const activeSheet = this.$store.getters['sheets/getActiveSheetFix'];
-      const userId = this.$store.getters['auth/userId'];
+      const userId = this.$store.getters['userId'];
       console.log("save sheet: ", activeSheet, userId)
-      this.$store.dispatch('sheets/saveSheet', [activeSheet, userId])
+      this.$store.dispatch('sheets/saveSheet', { activeSheet: activeSheet, userId: userId })
     }
 },
 computed: {

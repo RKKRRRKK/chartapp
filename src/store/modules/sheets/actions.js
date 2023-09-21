@@ -77,7 +77,8 @@ export default {
 
 
   async saveSheet(context, payload) {
-    const newFile = payload
+    const newFile = payload.activeSheet
+    console.log(payload.userId)
     const response = await fetch(
       `https://graphingsite-default-rtdb.europe-west1.firebasedatabase.app/files/${payload.userId}.json`,
       {
