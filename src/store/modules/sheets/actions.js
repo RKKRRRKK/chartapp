@@ -1,6 +1,6 @@
 export default {
   checkAndUpdateSheetState({ state, commit, dispatch }) {
-    console.log('checkAndUpdateSheetState action called.');
+  //  console.log('checkAndUpdateSheetState action called.');
 
     const activeSheet = state.sheets.find((sheet) => sheet.active === true);
 
@@ -9,18 +9,18 @@ export default {
       return;
     }
 
-    console.log('Found active sheet:', activeSheet);
+  //  console.log('Found active sheet:', activeSheet);
 
     if (activeSheet) {
-      console.log(
-        'Committing setSelected mutation with id:',
-        activeSheet.state
-      );
+   //   console.log(
+    //    'Committing setSelected mutation with id:',
+   //     activeSheet.state
+   //   );
       commit('graphs/setSelected', activeSheet.state, { root: true });
     } else {
-      console.log(
-        "No active sheet found or active sheet's state is null. Proceed with dispatch"
-      );
+   //   console.log(
+ //       "No active sheet found or active sheet's state is null. Proceed with dispatch"
+//      );
       dispatch('ensureOneSheetIsActive');
       dispatch('checkAndUpdateSheetState');
     }
@@ -73,5 +73,68 @@ export default {
 
   isLoading({commit}, newState) {
     commit('UPDATE_LOAD_STATE', newState)
+  },
+
+
+  async saveSheet(context, payload) {
+    const newFile = payload
+    const response = await fetch(
+      `https://graphingsite-default-rtdb.europe-west1.firebasedatabase.app/files/${payload.userId}.json`,
+      {
+        method: 'POST',
+        body: JSON.stringify(newFile)
+      }
+    );
+
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(
+        responseData.message || 'Failed to save data.'
+      );
+      throw error;
+    }
+    else console.log("sucessfully sent to firebase")
+
+    newFile.fireId = responseData.name;
+    newFile.userId = payload.id;
+
+    context.commit('ADD_ID', newFile);
+
+  },
+
+
+
+
+
+
+  async fetchFiles(context) {
+    const userId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
+    const response = await fetch(
+      `https://graphingsite-default-rtdb.europe-west1.firebasedatabase.app/files/${userId}.json?auth=` +
+        token
+    );
+    const responseData = await response.json();
+
+    if (!response.ok) {
+      const error = new Error(
+        responseData.message || 'Failed to fetch saved files.'
+      );
+      throw error;
+    }
+
+    const requests = [];
+
+    for (const key in responseData) {
+      requests.push(key);
+    }
+
+    context.commit('setRequests', requests);
   }
+
+
+
+
+
 };

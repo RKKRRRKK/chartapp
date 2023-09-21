@@ -21,7 +21,7 @@ const router = createRouter({
 router.beforeEach(function(to, _, next) {
   if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
     next('/auth');
-  } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+  } else if (to.meta.requiresNoAuth && store.getters.isAuthenticated) {
     next('/chart');
   } else {
     next();

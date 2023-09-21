@@ -36,7 +36,7 @@ export default {
           this.googleChartsLoaded = true;
           this.$nextTick(() => {});
         });
-      } 
+      }
     });
   },
 
@@ -55,7 +55,7 @@ export default {
         //   console.log('Formatted chart data:', header.concat(rows));
         return header.concat(rows);
       }
-      console.log('No formatted chart data');
+     // console.log('No formatted chart data');
       return [];
     },
     nodePadding() {
@@ -111,36 +111,28 @@ export default {
         },
       };
     },
-    data() {
-      return {
-        googleChartsLoaded: false,
-      };
-    },
+
     isLoading() {
-      return this.activeSheet.input
+      return this.activeSheet ? this.activeSheet.inputLoading : null;
     },
     hasInput() {
-      if (this.activeSheet && this.activeSheet.settings) {
-      return this.activeSheet.inputData}
-      return null
+      return this.activeSheet ? this.activeSheet.inputData : null;
     },
-
   },
+
   watch: {
-    isLoading(newVal) {
-      if (newVal === true) {
-        console.log("isLoading changed to true")
-        return true 
-      } 
+    isLoading: {
+      handler(newVal) {
+        if (newVal === false) {
+       //   console.log('isLoading changed to false');
+        }
+      },
+      deep: true, // Add this line
     },
-    hasInput(newVal) {
-      if (newVal) {
-        // inputData exists, so we can assume loading has finished
-        // Update the Vuex state to indicate loading has finished
+    hasInput() {
         this.$store.dispatch('sheets/isLoading', false);
-        console.log("hasInput triggered")
+    //    console.log('hasInput triggered');
       }
-    },
   },
 };
 </script>
@@ -171,8 +163,6 @@ export default {
 }
 
 .spinner {
-  transform: scale(4)
+  transform: scale(4);
 }
-
-
 </style>

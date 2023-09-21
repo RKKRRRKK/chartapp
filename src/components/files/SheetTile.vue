@@ -3,8 +3,8 @@
     <li>
       <h4>{{ name }}</h4>
       <div class="actions">
-        <small-button mode="outline" link to="/saved">save</small-button>
-        <small-button mode="outline" link to="/saved">^</small-button>
+        <small-button mode="outline" @click="save">save</small-button>
+        <small-button mode="outline"  link to="/">^</small-button>
         <small-button class="delete" @click="deleteFile">X</small-button>
       </div>
     </li>
@@ -21,14 +21,20 @@ methods: {
     },
     toggleActive () {
         this.$store.commit('sheets/toggleActive', {id: this.id});
-        console.log('CHECK THIS ID' + this.id);
+       // console.log('CHECK THIS ID' + this.id);
         this.$store.dispatch('sheets/checkAndUpdateSheetState');
+    },
+    save () {
+      const activeSheet = this.$store.getters['sheets/getActiveSheetFix'];
+      const userId = this.$store.getters['auth/userId'];
+      console.log("save sheet: ", activeSheet, userId)
+      this.$store.dispatch('sheets/saveSheet', [activeSheet, userId])
     }
 },
 computed: {
     card() {
-    const activeSheetId = this.$store.getters['sheets/getActive']; // Using the modified getter
-    const card = (this.id === activeSheetId) ? 'active' : 'card'; // Compare with own ID
+    const activeSheetId = this.$store.getters['sheets/getActive']; 
+    const card = (this.id === activeSheetId) ? 'active' : 'card'; 
     return card;
   }
 },

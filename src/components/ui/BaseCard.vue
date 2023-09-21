@@ -14,11 +14,11 @@ export default {
   },
 
   mounted() {
-    console.log('Base-card Component Mounted Mode:', this.mode);
+    //console.log('Base-card Component Mounted Mode:', this.mode);
   },
   watch: {
     mode(newVal) {
-      console.log('Base-card Component Updated Mode:', newVal);
+     console.log('Base-card Component Updated Mode:', newVal);
     },
   },
 };

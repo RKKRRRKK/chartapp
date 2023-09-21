@@ -14,7 +14,7 @@ export default {
   },
 
   toggleActive(state, payload) {
-    console.log('Payload ID:', payload.id);
+ //   console.log('Payload ID:', payload.id);
     state.sheets.forEach((sheet) => {
       sheet.active = false;
     });
@@ -23,17 +23,17 @@ export default {
     if (sheet) {
       sheet.active = true;
     }
-    console.log('State of each sheet after potential activation:');
-    state.sheets.forEach((sheet, index) => {
-      console.log('Sheet at index', index, ':', sheet);
-    });
+  //  console.log('State of each sheet after potential activation:');
+ //   state.sheets.forEach((sheet, index) => {
+ //     console.log('Sheet at index', index, ':', sheet);
+  //  });
   },
 
   SET_SHEET_ACTIVE_BY_INDEX(state, index) {
-    console.log('SET_SHEET_ACTIVE_BY_INDEX called', index, state.sheets);
+  //  console.log('SET_SHEET_ACTIVE_BY_INDEX called', index, state.sheets);
     if (state.sheets[index]) {
       state.sheets[index].active = true;
-      console.log('Sheet should now be active:', state.sheets[index]);
+  //    console.log('Sheet should now be active:', state.sheets[index]);
     }
   },
 
@@ -97,12 +97,20 @@ export default {
 
   UPDATE_LOAD_STATE(state,newState) {
     const sheet = state.sheets.find(sheet => sheet.active && sheet.state);
-    console.log(newState)
     if (sheet) {
-      sheet.input = newState
-      console.log(newState)
+      sheet.inputLoading = newState
+  //    console.log("change", newState)
     }
+  },
+
+ADD_ID(state,newFile) {
+  const sheet = state.sheets.find(sheet => sheet.id = newFile.sheetId);
+  if (sheet) {
+    sheet.save.fireId = newFile.fireId;
+    sheet.save.state = true;
+
   }
+}
 
 
 };

@@ -11,11 +11,13 @@ export default {
           id: '1',
           name: 'dummyfile',
           date: '12.12.2023',
+          sheetData: {},
         },
         {
           id: '2',
           name: 'dummyfile2',
           date: '15.12.2023',
+          sheetData: {},
         },
       ],
     };

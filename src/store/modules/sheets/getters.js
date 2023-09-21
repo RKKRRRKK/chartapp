@@ -11,7 +11,7 @@ export default {
     getActive(state) {
         const activeSheet = state.sheets.find(sheet => sheet.active);
         const active = activeSheet ? activeSheet.id : false;
-        console.log('getter', active);
+      //  console.log('getter', active);
         return active;
     },
 
@@ -21,9 +21,14 @@ export default {
         return active;
     },
 
-    
+    //this checks graphs selection too
     getActiveSheet(state) {
         const activeSheetAndGraph = state.sheets.find(sheet => sheet.active && sheet.state);
         return activeSheetAndGraph
+    },
+
+    getActiveSheetFix(state) {
+        const activeSheet = state.sheets.find(sheet => sheet.active);
+        return activeSheet
     }
 }; 
