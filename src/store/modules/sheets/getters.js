@@ -9,9 +9,10 @@ export default {
         return state.sheets.length > 0 ? state.sheets[state.sheets.length - 1].name : 'New Sheet 1';
     },
     getActive(state) {
+        console.log("getActive sheet triggered with state", state)
         const activeSheet = state.sheets.find(sheet => sheet.active);
         const active = activeSheet ? activeSheet.id : false;
-      //  console.log('getter', active);
+        console.log("getActive sheet: activeSheet: ", activeSheet," ", ", active id: ", active)
         return active;
     },
 
@@ -30,5 +31,13 @@ export default {
     getActiveSheetFix(state) {
         const activeSheet = state.sheets.find(sheet => sheet.active);
         return activeSheet
+    },
+
+    getActiveInputData(state) {
+        const activeSheet = state.sheets.find(sheet => sheet.active);
+        if (activeSheet && activeSheet.inputData && activeSheet.inputData.length > 0) {
+            return true;
+        }
+        else return false;
     }
 }; 

@@ -70,4 +70,19 @@ button:active {
 .outline:active {
   background-color: #f0d0c9;
 }
+
+button.disabled,
+a.disabled {
+  cursor: default;
+  opacity: 50%;
+}
+
+button.disabled:hover,
+a.disabled:hover {
+  background-color: inherit;
+  border-color: inherit;
+  color: #c56008;
+  opacity: 50%;
+}
+
 </style>

@@ -8,6 +8,7 @@
           :id="sheet.id"
           :name="sheet.name"
           :date="sheet.date"
+          :active-sheet-id="getActiveId"
           @delete-file="deleteSheet"
         ></sheet-tile>
       </ul>
@@ -34,6 +35,10 @@ export default {
     },
     getName() {
       return this.$store.getters['sheets/getName'];
+    },
+    getActiveId() {
+      return this.$store.getters['sheets/getActive'];
+      //this returns the active sheet's id
     },
   },
   methods: {

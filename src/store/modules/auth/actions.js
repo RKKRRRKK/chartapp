@@ -4,13 +4,13 @@ export default {
   async login(context, payload) {
     return context.dispatch('auth', {
       ...payload,
-      mode: 'login'
+      mode: 'login',
     });
   },
   async signup(context, payload) {
     return context.dispatch('auth', {
       ...payload,
-      mode: 'signup'
+      mode: 'signup',
     });
   },
   async auth(context, payload) {
@@ -27,8 +27,8 @@ export default {
       body: JSON.stringify({
         email: payload.email,
         password: payload.password,
-        returnSecureToken: true
-      })
+        returnSecureToken: true,
+      }),
     });
 
     const responseData = await response.json();
@@ -48,14 +48,15 @@ export default {
     localStorage.setItem('userId', responseData.localId);
     localStorage.setItem('tokenExpiration', expirationDate);
 
-    timer = setTimeout(function() {
+    timer = setTimeout(function () {
       context.dispatch('autoLogout');
     }, expiresIn);
 
     context.commit('setUser', {
       token: responseData.idToken,
-      userId: responseData.localId
+      userId: responseData.localId,
     });
+    context.dispatch('sheets/fetchFiles', { root: true });
   },
   tryLogin(context) {
     const token = localStorage.getItem('token');
@@ -68,14 +69,14 @@ export default {
       return;
     }
 
-    timer = setTimeout(function() {
+    timer = setTimeout(function () {
       context.dispatch('autoLogout');
     }, expiresIn);
 
     if (token && userId) {
       context.commit('setUser', {
         token: token,
-        userId: userId
+        userId: userId,
       });
     }
   },
@@ -88,11 +89,11 @@ export default {
 
     context.commit('setUser', {
       token: null,
-      userId: null
+      userId: null,
     });
   },
   autoLogout(context) {
     context.dispatch('logout');
     context.commit('setAutoLogout');
-  }
+  },
 };

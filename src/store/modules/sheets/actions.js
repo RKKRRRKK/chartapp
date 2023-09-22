@@ -99,8 +99,9 @@ export default {
 
     newFile.fireId = responseData.name;
     newFile.userId = payload.id;
+  
 
-    context.commit('ADD_ID', newFile);
+    //context.commit('ADD_ID', newFile);
 
   },
 
@@ -134,11 +135,17 @@ export default {
         date: responseData[key].date,
         name: responseData[key].name,
         settings: responseData[key].settings,
+        inputData: responseData[key].inputData,
+        fileActive: null, 
+
       };
       files.push(file);
     }
 
-    context.commit('files/SET_FILES', files, {root:true});
+    if (files.length > 0) {
+      files[0].fileActive = true;
+      context.commit('files/SET_FILES', files, {root:true});
+    }
   }
 
 

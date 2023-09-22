@@ -9,15 +9,12 @@ export default {
       files: [
         {
           id: '1',
-          name: 'dummyfile',
+          userId: null,
           date: '12.12.2023',
-          sheetData: {},
-        },
-        {
-          id: '2',
-          name: 'dummyfile2',
-          date: '15.12.2023',
-          sheetData: {},
+          name: "dummyfile1",
+          settings: null,
+          inputData: null,
+          fileActive: null,
         },
       ],
     };

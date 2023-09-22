@@ -26,7 +26,9 @@ export default {
 
   methods: {
     getFiles() {
-      this.$store.dispatch('sheets/fetchFiles');
+      const userId = this.$store.getters['userId'];
+      if (userId) {
+      this.$store.dispatch('sheets/fetchFiles')}
     }
 
 
