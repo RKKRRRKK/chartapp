@@ -13,8 +13,9 @@
         <input class="range" type="range" v-model="nodeWidth" @input="updateNode" />
       </div>
       <div v-show="state">
-        Font Size:
+        <label>Font Size:
         <input class="input" type="number" v-model="fontSize" @input="updateFont"/>
+      </label>
       </div>
       </div>
       <div class="colortool" v-show="state">
@@ -119,11 +120,14 @@ export default {
 .colormode {
   display: flex;
   flex-direction: row;
+  flex-wrap:wrap;
+  flex-
 }
 
 .radio {
   font-size: 0.7rem;
   text-align: center;
+  
 }
 
 .input {
@@ -134,7 +138,9 @@ export default {
   background-color: #fffcfa;
   padding: 0.1rem;
   margin: 0;
+  margin-top: 1rem;
   text-align: center;
+  width: 50%;
   
 }
 
@@ -147,6 +153,7 @@ h2 {
   margin-top: 0;
   font-size: 1rem;
   background-color: #df5020;
+  color: white;
 }
 
 h3 {
@@ -159,6 +166,7 @@ h3 {
   margin-top: 3rem;
   font-size: 0.9rem;
   background-color: #df5020;
+  color: white;
 }
 
 .size {

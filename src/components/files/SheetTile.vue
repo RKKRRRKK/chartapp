@@ -100,7 +100,8 @@ h4 {
 .actions {
   font-size: 0.8rem;
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  margin-bottom: -0.7rem;
   gap: 0.5rem;
 }
 

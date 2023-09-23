@@ -60,7 +60,7 @@ a {
   font: inherit;
   background-color: #df5020;
   border: 1px solid #df5020;
-  color: black;
+  color: white;
   cursor: pointer;
   border-radius: 2rem;
   margin-right: 0.5rem;

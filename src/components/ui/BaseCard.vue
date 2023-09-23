@@ -88,6 +88,7 @@ export default {
       #fefbfa 20px
     );
   cursor: pointer;
+  opacity: 50%;
 }
 
 .card:hover {
@@ -108,6 +109,7 @@ export default {
     );
     animation: gradientAnimation 15s infinite linear; 
   cursor: pointer;
+  opacity: 75%;
 }
 
 .active{
