@@ -51,16 +51,15 @@ a {
   color: white;
   cursor: pointer;
   border-radius: 2rem;
-  margin-right: 0.5rem;
-  display: inline-block;
+  margin-right: 1rem;
 }
 
 .animate-click {
   text-decoration: none;
   padding: 0.5rem 1rem;
   font: inherit;
-  background-color: #f48e1b;
-  border: 1px solid #f48e1b;
+  background-color: #df5020;
+  border: 1px solid #df5020;
   color: black;
   cursor: pointer;
   border-radius: 2rem;
@@ -74,32 +73,43 @@ a:active,
 button:hover,
 button:active,
 .animate-click:active {
-  background-color: #ff9e02;
-  border-color: #ff9e02;
+  background-color: #DFB020;
+  border-color: #DFB020;
 }
 
 .flat {
   background-color: transparent;
-  color: #ec3705;
+  color: #df5020;
   border: none;
 }
 
 .outline {
-  background-color: transparent;
-  border-color: #ec3705;
-  color: #ec3705;
+  background-color: #fefbfa;
+  border-color: #df5020;
+  color: #df5020;
 }
 
 .flat:hover,
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #f0d0c9;
+  background-color: #df5020;
+  color: black;
+  border-color: #df5020;
 }
 
 .animate-click.clicked {
   background-color:#f5b753;
-  border-color:#df481f;
+  border-color:#f7ddd4;
   transition: background-color 0.1s ease-out, border-color 0.1s ease-out;
 }
+
+.delete {
+  background-color: #df5020;
+}
+
+.delete:hover {
+  background-color: #DFB020;
+}
+
 </style>

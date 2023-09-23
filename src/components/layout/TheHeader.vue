@@ -46,7 +46,7 @@ export default {
 header {
   width: 100vw;
   height: 4rem;
-  background-color: #ec3705;
+  background-color: #df5020;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,8 +63,8 @@ a:active,
 a:hover,
 a.router-link-active {
   border-bottom: 2.5px solid #ea8e74;
-  color: #f3af30;
-  border-color: #f3af30;
+  color: #DFB020;
+  border-color: #DFB020;
   font-weight:bolder;
 }
 
@@ -105,13 +105,13 @@ li {
 }
 
 .login {
-    background-color: #dd3405;
+    background-color: #df5020;
     width: 12vw;
     height: 4rem;
 }
 
 .logo {
-    background-color: orange;
+    background-color: #DFB020;
     width: 3rem;
     height:3rem;
     position: absolute;

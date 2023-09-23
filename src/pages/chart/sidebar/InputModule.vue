@@ -80,7 +80,7 @@ export default {
 }
 
 .button {
-  font-size: 25px;
+  font-size: 1rem;
   padding: 1rem;
   padding-left: 4rem;
   padding-right: 4rem;

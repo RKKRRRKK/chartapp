@@ -2,10 +2,14 @@
   <div class="sections">
     <side-bar class="sidebar"></side-bar>
     <viz-pane v-show="!selectedGraph" class="vizpane"> </viz-pane>
-    <sankey-chart v-show="selectedGraph ===1"></sankey-chart>
-    <waterfall-chart v-show="selectedGraph === 2"></waterfall-chart>
-    <other-chart v-show="selectedGraph === 3"></other-chart>
-    <another-chart v-show="selectedGraph === 4"></another-chart>
+
+    <div class="charts" v-show="selectedGraph">
+      <sankey-chart v-show="selectedGraph === 1"></sankey-chart>
+      <waterfall-chart v-show="selectedGraph === 2"></waterfall-chart>
+      <other-chart v-show="selectedGraph === 3"></other-chart>
+      <another-chart v-show="selectedGraph === 4"></another-chart>
+    </div>
+
     <sheet-manager class="sheetmanager"> </sheet-manager>
   </div>
 </template>
@@ -27,7 +31,7 @@ export default {
     SankeyChart,
     WaterfallChart,
     OtherChart,
-    AnotherChart
+    AnotherChart,
   },
   computed: {
     selectedGraph() {
@@ -44,15 +48,28 @@ export default {
 }
 
 .vizpane {
-  width: 100%;
+  width: 75vw;
+}
+
+.charts {
+  width: 75vw;
+  background-color: transparent;
+
 }
 
 .sheetmanager {
-  width: 13.5vw;
+  width: 10.2vw;
+  border-color: #f7ddd4;
+  border-left-width: 0.4rem;
+  border-left-style:solid;
 }
 
 .sidebar {
-  width: 20vw;
-  background-color: #ea9a84;
+  width: 15vw;
+  background-color: #fffcfa;
+  border-color: #f7ddd4;
+  border-right-width: 0.4rem;
+  border-right-style:solid;
+
 }
 </style>

@@ -101,11 +101,11 @@ export default {
   flex-direction: column;
   align-items: center;  /* Horizontal centering */
   justify-content: flex-start; /* Vertical start, could be 'center' if you like */
-  height: 100vh;  /* Full viewport height */
+  height: 100%;  /* Full viewport height */
 }
 
 .toolbar {
-  background-color: #df481f;
+  background-color: #fefbfa;
   width: 90%;
   max-width: 500px;  /* Optional, max-width to avoid an overly wide toolbar */
   border-radius: 2rem;
@@ -113,6 +113,7 @@ export default {
   display: flex;
   flex-direction: column;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.20);
+  
 }
 
 .colormode {
@@ -121,17 +122,20 @@ export default {
 }
 
 .radio {
-  font-size: 14px;
+  font-size: 0.7rem;
   text-align: center;
 }
 
 .input {
   border-radius: 0.5rem;
-  border-color: #ea9a84;
-  border-width: 0;
-  background-color: #edc2b7;
-  padding: 0.3rem;
+  border-color: #f5bea3;
+  border-width: 0.15rem;
+  border-style:solid;
+  background-color: #fffcfa;
+  padding: 0.1rem;
+  margin: 0;
   text-align: center;
+  
 }
 
 h2 {
@@ -141,6 +145,8 @@ h2 {
   border-radius: 2rem;
   padding: 1rem;
   margin-top: 0;
+  font-size: 1rem;
+  background-color: #df5020;
 }
 
 h3 {
@@ -151,6 +157,8 @@ h3 {
   padding: 0.2rem;
   margin: 2rem;
   margin-top: 3rem;
+  font-size: 0.9rem;
+  background-color: #df5020;
 }
 
 .size {
@@ -159,6 +167,9 @@ h3 {
   padding: 0.5rem;
   margin: 1.5rem;
   margin-top: -1.5rem;
+  border-color: #f7ddd4;
+  border-width: 0.25rem;
+  border-style: solid;
 }
 
 .colors {
@@ -167,6 +178,9 @@ h3 {
   padding: 1rem;
   margin: 0rem;
   margin-top: -1rem;
+  border-color: #f7ddd4;
+  border-width: 0.25rem;
+  border-style: solid;
 }
 
 input[type=range] {
@@ -213,6 +227,11 @@ input[type=range]::-moz-range-track {
   height: 10px;
   cursor: pointer;
   background: #edc2b7;
+}
+
+label,
+div {
+  font-size: 0.8rem;
 }
 
 </style>

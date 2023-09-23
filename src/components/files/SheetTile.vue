@@ -1,7 +1,10 @@
 <template>
   <base-card :mode="card" @click="toggleActive">
     <li>
+      <div class="delname">
       <h4>{{ name }}</h4>
+      <small-button class="delete" @click="deleteFile">X</small-button>
+    </div>
       <div class="actions">
         <small-button
           mode="outline"
@@ -26,7 +29,6 @@
           :disabled="!isActive"
           >tbd button</small-button
         >
-        <small-button class="delete" @click="deleteFile">X</small-button>
       </div>
     </li>
   </base-card>
@@ -93,10 +95,31 @@ h4 {
   margin: 0;
   padding-bottom: 0.5rem;
   font-size: 0.8rem;
+  color: white;
 }
 .actions {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 0.5rem;
 }
+
+.delname {
+    display: flex;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+.delete {
+    position: relative;
+    margin: 0;
+    margin-left: 4rem;
+    margin-bottom: 1rem;
+    margin-top: -0.4rem;
+    text-align: center;
+    text-justify: center;
+    scale: 0.7;
+}
+
+
+
 </style>

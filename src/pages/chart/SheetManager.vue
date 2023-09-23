@@ -102,14 +102,17 @@ export default {
   align-items: center;
   justify-content: center;
   position: relative;
-  background-color: #ea9a84;
+  background-color: #fefbfa;
   height: 100vh;
 }
 .sheets {
-  background-color: #e06340;
+  background-color: #fefbfa;
   height: 98%;
   width: 90%;
   border-radius: 25px;
+  border-color: #f7ddd4;
+  border-width: 0.25rem;
+  border-style: solid;
 }
 
 ul {
@@ -124,14 +127,14 @@ ul {
   text-align: center;
   margin-top: -2.5rem;
   font-size: 2rem;
-  color: #bf3813;
+  color: #df5020;
   cursor: pointer;
 }
 
 .add:hover,
 .add:active,
 .add:focus {
-  color: #ff893a;
+  color: #DFB020;
 }
 </style>
 

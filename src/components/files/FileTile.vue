@@ -1,15 +1,17 @@
 <template>
   <base-card :mode="card"  @click="toggleActive">
     <li>
+    <div class="delname">
       <h4>{{ name }}</h4>
-      <h5>{{ '(' + date + ')' }}</h5>
+      <base-button mode="delete" class="delete" link to="/saved">x</base-button>
+    </div>
+      <h5>{{ '(' + formattedDate + ')' }}</h5>
       <div class="actions">
         <base-button @click="hydrateSheet" mode="outline" link to="/chart"
           >create a sheet</base-button
         >
         <base-button mode="outline" link to="/saved">edit</base-button>
         <base-button mode="outline" link :to="iframePath">i-frame</base-button>
-        <base-button link to="/saved">delete</base-button>
       </div>
     </li>
   </base-card>
@@ -19,6 +21,15 @@
 export default {
   props: ['id', 'name', 'date'],
   computed: {
+    formattedDate() {
+    const dateObj = new Date(this.date);
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // +1 because months are 0-indexed
+    const day = String(dateObj.getDate()).padStart(2, '0');
+    const hours = String(dateObj.getHours()).padStart(2, '0');
+    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+    return `${year}-${month}-${day} ${hours}:${minutes}`;
+  },
     iframePath() {
       return '/saved/' + this.id + '/frame';
     },
@@ -69,21 +80,43 @@ li {
 h4 {
   text-align: left;
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin-top: -0.4rem;
+  color:white;
 }
 
 h5 {
-  margin-bottom: 1rem;
-  margin-top: 0.1rem;
-  font-size: 0.6rem;
+  margin-bottom: 1.5rem;
+  margin-top: -1rem;
+  font-size: 0.8rem;
   text-align: left;
 }
 
 .actions {
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 }
 
 div {
   text-align: right;
+}
+
+.delete {
+    position: relative;
+    padding: 0.1rem 0.5rem;
+    margin: 0;
+    margin-left: 20rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    text-justify: center;
+    margin-top: -0.7rem;
+    border-style: solid;
+    border-width: 0.1rem;
+    border-color: white;
+}
+
+.delname {
+    display: flex;
+    padding-bottom: 0.5rem;
+
 }
 </style>

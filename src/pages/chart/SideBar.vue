@@ -26,13 +26,14 @@ export default {
 }
 
 .container {
-  background-color: #d78068;
+  background-color: #fffcfa;
   width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 2.5rem;
   border-radius: 2.5rem;
+  
 
   
 }
@@ -40,6 +41,7 @@ export default {
 .settings {
   height: 50%;
   width: 100%;
+  
   
 }
 

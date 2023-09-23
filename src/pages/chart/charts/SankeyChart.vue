@@ -143,6 +143,7 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
+  height: 100%;
   background-size: 40px 40px;
   background-image: linear-gradient(
       to right,
@@ -159,7 +160,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: -25rem;
+  margin-top: -15rem;
 }
 
 .spinner {

@@ -218,9 +218,9 @@ export default {
 
 .input {
   border-radius: 0.5rem;
-  border-color: #ea9a84;
+  border-color: #f7ddd4;
   border-width: 0;
-  background-color: #edc2b7;
+  background-color: #f7ddd4;
   padding: 0rem;
   width: 3rem;
   text-align: center;
@@ -229,8 +229,8 @@ export default {
 
 .picker {
     border-radius: 0.5rem;
-    border-color: #ea9a84;
-    background-color: #ea9a84;
+    border-color: #fefbfa;
+    background-color: #fefbfa;
     cursor: pointer;
 }
 
@@ -241,7 +241,7 @@ export default {
 }
 
 .label {
-    font-size: 14px;
+    font-size: 0.7rem;
     padding-right: 0.2rem;
     padding-left: 1rem;
 }

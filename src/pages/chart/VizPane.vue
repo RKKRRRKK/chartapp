@@ -4,7 +4,7 @@
       v-for="graph in graphs"
       :key="graph.id"
       :class="`graph${graph.id}`"
-      mode="outline"
+      mode="outline-vizpane"
       @click="toggleSelected(graph.id)"
     ></base-card>
   </div>

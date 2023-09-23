@@ -35,12 +35,12 @@ a {
   text-decoration: none;
   padding: 0.2rem 0.5rem;
   font: inherit;
-  background-color: #ec3705;
-  border: 1px solid #ec3705;
+  background-color: #df5020;
+  border: 1px solid #ffffff;
   color: white;
   cursor: pointer;
   display: flex;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   justify-content: space-between;
 }
 
@@ -50,6 +50,7 @@ button:hover,
 button:active {
   background-color: #ff9e02;
   border-color: #ff9e02;
+  color:white;
 }
 
 .flat {
@@ -59,30 +60,29 @@ button:active {
 }
 
 .outline {
-  background-color: transparent;
-  border-color: #c56008;
-  color: #c56008;
+  background-color: #df5020;
+  border-color: #df5020;
+  color: black;
+  color: white;
 }
 
 .flat:hover,
 .flat:active,
 .outline:hover,
 .outline:active {
-  background-color: #f0d0c9;
+  background-color: #DFB020;
 }
 
 button.disabled,
 a.disabled {
   cursor: default;
-  opacity: 50%;
+  opacity: 40%;
 }
 
 button.disabled:hover,
 a.disabled:hover {
-  background-color: inherit;
-  border-color: inherit;
   color: #c56008;
-  opacity: 50%;
+  opacity: 30%;
 }
 
 </style>
