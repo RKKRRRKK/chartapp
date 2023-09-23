@@ -24,7 +24,7 @@ export default {
     },
     card() {
         console.log("is this being propagated? FileTile.vue")
-      const activeFileId = this.$store.getters['file/getActive'];
+      const activeFileId = this.$store.getters['files/getActive'];
       const card = this.id === activeFileId ? 'active-file' : 'outline';
       console.log("this.id: ", this.id)
       console.log("this.id: ", activeFileId)
@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     hydrateSheet() {
-      const file = this.$store.getters('files/files');
+      const file = this.$store.getters['files/getActiveFile'];
       const newSheet = {
         id: file.id,
         name: file.name,

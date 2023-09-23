@@ -14,5 +14,10 @@ export default {
         return active;
     },
 
+    getActiveFile(state) {
+        const activeFile = state.files.find(file => file.fileActive);
+        return activeFile;
+    },
+
     
 }; 
