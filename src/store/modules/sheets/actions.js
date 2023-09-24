@@ -133,7 +133,7 @@ export default {
         id: key,
         userId: userId,
         date: responseData[key].date,
-        name: responseData[key].name,
+        name: responseData[key].inputName ? responseData[key].inputName : responseData[key].name,
         settings: responseData[key].settings,
         inputData: responseData[key].inputData,
         fileActive: null, 

@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  props: ['id', 'name', 'activeSheetId'],
+  props: ['id', 'name', 'activeSheetId', 'userInput'],
 
   data() {
     return {
@@ -83,11 +83,11 @@ export default {
       const activeSheet = this.$store.getters['sheets/getActiveSheetFix'];
       const userId = this.$store.getters['userId'];
       if (userId) {
+        activeSheet['inputName'] = this.inputName
         console.log('save sheet: ', activeSheet, userId);
         this.$store.dispatch('sheets/saveSheet', {
           activeSheet: activeSheet,
           userId: userId,
-          inputName: this.inputName,
         });
         this.showDialog = false;
       } else console.log('not logged in');
