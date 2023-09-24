@@ -160,7 +160,7 @@ export default {
     background-position: 0 0, 0 0;
   }
   100% {
-    background-position: 0 200%, 0 800px;
+    background-position: 0 0, 800px 0;
   }
 }
 

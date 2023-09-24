@@ -1,7 +1,12 @@
 export default {
   addSheet(state, sheet) {
-    state.sheets.push(sheet);
+    if (!state.sheets.find(existingSheet => existingSheet.id === sheet.id)) {
+      state.sheets.push(sheet);
+    } else {
+      console.warn(`A sheet with id ${sheet.id} already exists!`);
+    }
   },
+  
   deleteSheet(state, id) {
     state.sheets = state.sheets.filter((sheet) => sheet.id !== id);
   },

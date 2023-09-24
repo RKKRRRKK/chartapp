@@ -1,42 +1,37 @@
 <template>
-    <button v-if="!link" :class="mode"  @click="toggleClick($event)">
-        <slot></slot>
-    </button>
-    <router-link v-else :class="mode" :to="to" @click="toggleClick($event)">
-        <slot></slot>
-    </router-link>
+    <button v-if="!link" :class="mode">
+      <slot></slot>
+  </button>
+  <router-link v-else :to="to" :class="mode">
+      <slot></slot>
+  </router-link>
 </template>
 
 <script>
 export default {
-    props: {
-        mode:{
-            type: String,
-            required: false,
-            default: null,
-        },
-        link: {
-            type: Boolean,
-            required: false,
-            default: false
-        },
-        to: {
-            type: String,
-            required: false,
-            default: '/'
-        }
-    },
+  props: {
+      mode: {
+          type: String,
+          required: false,
+          default: null,
+      },
+      link: {
+          type: Boolean,
+          required: false,
+          default: false
+      },
+      to: {
+          type: String,
+          required: false,
+          default: '/'
+      },
+      disabled: {
+          type: Boolean,
+          required: false,
+          default: false
+      }
+  },
 
-    methods: {
-      toggleClick(event) {
-      const element = event.target;
-      element.classList.add('clicked');
-      
-      setTimeout(() => {
-        element.classList.remove('clicked');
-      }, 200);
-    }
-    }
 }
 </script>
 
@@ -46,8 +41,8 @@ a {
   text-decoration: none;
   padding: 0.5rem 1rem;
   font: inherit;
-  background-color: #ec3705;
-  border: 1px solid #ec3705;
+  background-color: #df5020;
+  border: 1px solid #df5020;
   color: white;
   cursor: pointer;
   border-radius: 2rem;
@@ -75,6 +70,7 @@ button:active,
 .animate-click:active {
   background-color: #DFB020;
   border-color: #DFB020;
+
 }
 
 .flat {
@@ -94,7 +90,7 @@ button:active,
 .outline:hover,
 .outline:active {
   background-color: #df5020;
-  color: black;
+  color: white;
   border-color: #df5020;
 }
 
@@ -110,6 +106,18 @@ button:active,
 
 .delete:hover {
   background-color: #DFB020;
+}
+
+button.disabled,
+a.disabled {
+  cursor: default;
+  opacity: 40%;
+}
+
+button.disabled:hover,
+a.disabled:hover {
+  color: #c56008;
+  opacity: 0%;
 }
 
 </style>

@@ -1,75 +1,111 @@
 <template>
-  <base-card :mode="card"  @click="toggleActive">
+  <base-card :mode="card" @click="toggleActive">
     <li>
-    <div class="delname">
-      <h4>{{ name }}</h4>
-      <base-button mode="delete" class="delete" link to="/saved">x</base-button>
-    </div>
+      <div class="delname">
+        <h4>{{ name }}</h4>
+        <base-button
+          :class="{ disabled: !isActive }"
+          :disabled="!isActive"
+          mode="delete"
+          class="delete"
+          link
+          :to="isActive ? '/saved' : ''"
+          >x</base-button
+        >
+      </div>
       <h5>{{ '(' + formattedDate + ')' }}</h5>
       <div class="actions">
-        <base-button @click="hydrateSheet" mode="outline" link to="/chart"
+        <base-button
+          @click="hydrateSheet"
+          :class="{ disabled: !isActive }"
+          :disabled="!isActive"
+          mode="outline"
+          link
+          :to="isActive ? '/chart' : ''"
           >create a sheet</base-button
         >
-        <base-button mode="outline" link to="/saved">edit</base-button>
-        <base-button mode="outline" link :to="iframePath">i-frame</base-button>
+        <base-button
+          :class="{ disabled: !isActive }"
+          :disabled="!isActive"
+          mode="outline"
+          link
+          :to="isActive ? '/saved' : ''"
+          >edit</base-button
+        >
+        <base-button
+          :class="{ disabled: !isActive }"
+          :disabled="!isActive"
+          mode="outline"
+          link
+          :to="isActive ? iframePath : ''"
+          >i-frame</base-button
+        >
       </div>
     </li>
   </base-card>
 </template>
-
 <script>
 export default {
   props: ['id', 'name', 'date'],
   computed: {
     formattedDate() {
-    const dateObj = new Date(this.date);
-    const year = dateObj.getFullYear();
-    const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // +1 because months are 0-indexed
-    const day = String(dateObj.getDate()).padStart(2, '0');
-    const hours = String(dateObj.getHours()).padStart(2, '0');
-    const minutes = String(dateObj.getMinutes()).padStart(2, '0');
-    return `${year}-${month}-${day} ${hours}:${minutes}`;
-  },
+      const dateObj = new Date(this.date);
+      const year = dateObj.getFullYear();
+      const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // +1 because months are 0-indexed
+      const day = String(dateObj.getDate()).padStart(2, '0');
+      const hours = String(dateObj.getHours()).padStart(2, '0');
+      const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+      return `${year}-${month}-${day} ${hours}:${minutes}`;
+    },
     iframePath() {
       return '/saved/' + this.id + '/frame';
     },
     card() {
-        console.log("is this being propagated? FileTile.vue")
+      console.log('is this being propagated? FileTile.vue');
       const activeFileId = this.$store.getters['files/getActive'];
       const card = this.id === activeFileId ? 'active-file' : 'outline';
-      console.log("this.id: ", this.id)
-      console.log("this.id: ", activeFileId)
+      console.log('this.id: ', this.id);
+      console.log('this.id: ', activeFileId);
       return card;
+    },
+
+    isActive() {
+      const activeFileId = this.$store.getters['files/getActive'];
+      return this.id == activeFileId;
     },
   },
   methods: {
     hydrateSheet() {
-      const file = this.$store.getters['files/getActiveFile'];
-      const newSheet = {
-        id: file.id,
-        name: file.name,
-        date: file.date,
-        active: null,
-        state: null, //name of chart if clicked
-        inputLoading: null,
-        inputData: file.inputData, //saved chart data
-        save: true, //true or false, checks if sheet was saved
-        settings: file.settings
-      };
+    const file = this.$store.getters['files/getActiveFile'];
+    console.log("1 ", this.id, " ", file.id)
+    if (this.id === file.id) {
+        const newSheet = {
+            id: file.id,
+            name: file.name,
+            date: file.date,
+            active: null,
+            state: null, //name of chart if clicked
+            inputLoading: null,
+            inputData: file.inputData, //saved chart data
+            save: true, //true or false, checks if sheet was saved
+            settings: file.settings,
+        };
 
-      this.$store.commit('sheets/addSheet', newSheet);
-      this.$store.commit('sheets/toggleActive', { id: newSheet.id });
-    },
+        this.$store.commit('sheets/addSheet', newSheet);
+        this.$store.commit('sheets/toggleActive', { id: newSheet.id });
+    }
+},
 
-    toggleActive() {
-      this.$store.commit('files/toggleActive', { id: this.id })
-      console.log("click: id:", this.id);
-    },
-    deleteFile() {
-      this.$emit('delete-file', this.id);
-    },
-  },
-};
+toggleActive() {
+    this.$store.commit('files/toggleActive', { id: this.id });
+    console.log('click: id:', this.id);
+},
+
+deleteFile() {
+    this.$emit('delete-file', this.id);
+},
+},
+}
 </script>
 
 <style scoped>
@@ -82,7 +118,7 @@ h4 {
   margin: 0;
   font-size: 1.1rem;
   margin-top: -0.4rem;
-  color:white;
+  color: white;
 }
 
 h5 {
@@ -101,22 +137,22 @@ div {
 }
 
 .delete {
-    position: relative;
-    padding: 0.1rem 0.5rem;
-    margin: 0;
-    margin-left: 20rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    text-justify: center;
-    margin-top: -0.7rem;
-    border-style: solid;
-    border-width: 0.1rem;
-    border-color: white;
+  position: relative;
+  padding: 0.1rem 0.5rem;
+  margin: 0;
+  margin-left: 20rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  text-justify: center;
+  margin-top: -0.7rem;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: white;
 }
 
 .delname {
-    display: flex;
-    padding-bottom: 0.5rem;
-
+  display: flex;
+  padding-bottom: 0.5rem;
+  justify-content: space-between;
 }
 </style>
