@@ -12,6 +12,7 @@ import SmallButton from './components/ui/SmallButton.vue';
 import BaseDialog from './components/ui/BaseDialog.vue';
 import BaseSpinner from './components/ui/BaseSpinner.vue';
 import BaseRadio from './components/ui/BaseRadio.vue';
+import BaseWindow from './components/ui/BaseWindow.vue';
 
 const app = createApp(App)
 
@@ -27,6 +28,7 @@ app.component('GChart', GChart);
 app.component('base-dialog', BaseDialog);
 app.component('base-spinner', BaseSpinner);
 app.component('base-radio', BaseRadio);
+app.component('base-window', BaseWindow);
 
 
 app.mount('#app');
