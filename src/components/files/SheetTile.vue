@@ -124,13 +124,7 @@ li {
   flex-direction: column;
   justify-content: flex-start;
 }
-h4 {
-  text-align: center;
-  margin: 0;
-  padding-bottom: 0.5rem;
-  font-size: 0.8rem;
-  color: white;
-}
+
 .actions {
   font-size: 0.8rem;
   display: flex;
@@ -141,17 +135,26 @@ h4 {
 
 .delname {
   display: flex;
-  margin-top: -0.5rem;
-  margin-bottom: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2rem;
+  margin-top: -1rem;
 }
-.delete {
-  position: relative;
+
+h4 {
+  flex-shrink: 1; /* Allows the h4 to shrink */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Optional, but will add '...' if the text is truncated */
   margin: 0;
-  margin-left: 4rem;
-  margin-bottom: 1rem;
-  margin-top: -0.4rem;
-  text-align: center;
-  text-justify: center;
-  scale: 0.7;
+  font-size: 0.8rem;
+  color: white;
+  max-width: calc(100% - 1rem); /* Assuming 1rem is the width of your button, adjust as necessary */
+}
+
+.delete {
+  flex-shrink: 0;
+  scale: 0.7 /* Prevents the button from shrinking */
+  /* ...other styles */
 }
 </style>
