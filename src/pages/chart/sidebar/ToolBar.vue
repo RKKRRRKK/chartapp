@@ -194,7 +194,7 @@ h3 {
   border-radius: 1rem;
   padding: 0.5rem;
   margin: 1.5rem;
-  margin-top: -1.5rem;
+  margin-top: -1rem;
   border-color: #f7ddd4;
   border-width: 0.25rem;
   border-style: solid;
