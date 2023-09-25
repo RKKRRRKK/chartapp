@@ -13,5 +13,9 @@ export default {
            if (file) {
             console.log("found matching file id:", file.id)
              file.fileActive = true;
-           }}
+           }},
+
+      DELETE_FILE(state,id) {
+        state.files =  state.files.filter((file) => file.id !== id)
+      }
 };

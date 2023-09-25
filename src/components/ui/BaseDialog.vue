@@ -14,6 +14,7 @@
           <menu v-if="!fixed">
             <slot name="actions">
               <base-button @click="tryClose">Close</base-button>
+              <base-button @click="confirm">Confirm</base-button>
             </slot>
           </menu>
         </dialog>
@@ -46,6 +47,9 @@
         }
         this.$emit('close');
       },
+      confirm() {
+        this.$emit('confirm');
+      }
     },
   };
   </script>

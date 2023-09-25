@@ -8,10 +8,12 @@
           :disabled="!isActive"
           mode="delete"
           class="delete"
+          @click="deleteFile"
           link
           :to="isActive ? '/saved' : ''"
           >x</base-button
         >
+      <base-dialog :show="confirmDelete" title="Warning: This action will permanently delete the file." @confirm="handleDelete" @close="confirmDelete = false"></base-dialog>
       </div>
       <h5>{{ '(' + formattedDate + ')' }}</h5>
       <div class="actions">
@@ -46,6 +48,12 @@
 </template>
 <script>
 export default {
+  data() {
+  return {
+    confirmDelete: false
+  };
+},
+
   props: ['id', 'name', 'date'],
   computed: {
     formattedDate() {
@@ -101,8 +109,13 @@ toggleActive() {
     console.log('click: id:', this.id);
 },
 
+handleDelete() {
+  this.confirmDelete = false;
+  this.$emit('delete-file', this.id);
+},
+
 deleteFile() {
-    this.$emit('delete-file', this.id);
+    this.confirmDelete = true; 
 },
 },
 }

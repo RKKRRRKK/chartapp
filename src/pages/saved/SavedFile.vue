@@ -7,6 +7,7 @@
         :id="file.id"
         :name="file.name"
         :date="file.date"
+        @delete-file="deleteFile"
       ></file-tile>
     </ul>
     <h3 v-else>No saved files.</h3>
@@ -27,6 +28,14 @@ export default {
       return this.$store.getters['files/hasFiles'];
     },
   },
+
+  methods: {
+    deleteFile(id) {
+      id = this.$store.getters['files/getActive']
+      console.log("deleteFile id ", id)
+      this.$store.dispatch('files/deleteFile', id);
+    },
+  }
 };
 </script>
 

@@ -119,6 +119,7 @@ export default {
   max-width: 40rem;
   margin-bottom: 2rem;
   background-color: #df5020;
+  background-repeat: repeat;
   background: 
     linear-gradient(to bottom, #df5020 0%, #df5020 35%, transparent 35%, transparent 100%),
     repeating-linear-gradient(
@@ -139,6 +140,7 @@ export default {
   padding: 1rem;
   max-width: 40rem;
   margin-bottom: 2rem;
+  background-repeat: no-repeat;
   background: 
     linear-gradient(to bottom, #df5020 0%, #df5020 30%, transparent 30%, transparent 100%),
     repeating-linear-gradient(

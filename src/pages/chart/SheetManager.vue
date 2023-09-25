@@ -84,7 +84,6 @@ export default {
     },
 
     deleteSheet(id) {
-      // Step 1: Find the index of the sheet with the given id
       this.$store.commit('sheets/deleteSheet', id);
     },
   },
