@@ -15,7 +15,7 @@
     </nav>
     <div class="login">
       <div class="logo">
-        <router-link to="/auth">Click</router-link>
+        <router-link to="/login">Click</router-link>
       </div>
     </div>
   </header>
