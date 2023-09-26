@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="somethingelse">
     <user-auth class="login"></user-auth>
     <login-logo class="tres-logo"></login-logo>
   </div>
@@ -29,7 +29,7 @@ export default {
     width: 50%;
 }
 
-.container {
+.somethingelse {
     display: flex;
     flex-direction: row;
     height: 60vh;
