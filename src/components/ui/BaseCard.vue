@@ -25,26 +25,6 @@ export default {
 </script>
 
 <style scoped>
-
-.outline-vizpane {
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
-  max-width: 40rem;
-  margin-bottom: 2rem;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.outline-vizpane:hover {
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 1rem;
-  max-width: 40rem;
-  margin-bottom: 2rem;
-  background-color: #f7ddd4;
-  cursor: pointer;
-}
 .outline {
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);

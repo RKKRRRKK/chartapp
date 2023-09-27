@@ -1,30 +1,42 @@
 <template>
     <div class="tres-container">
-      <TresCanvas clear-color="#82DBC5">
-        <TresPerspectiveCamera :position="[3, 3, 3]" :look-at="[0, 0, 0]" />
-        <TresMesh>
-          <TresTorusGeometry :args="[1, 0.5, 16, 32]" />
-          <TresMeshBasicMaterial color="orange" />
-        </TresMesh>
-        <TresAmbientLight :intensity="1" />
-      </TresCanvas>
+      <Suspense>
+        <TresCanvas clear-color="#82DBC5">
+          <TresPerspectiveCamera :position="[3, 3, 3]" :look-at="[0, 0, 0]" />
+          <TresMesh v-if="foxObject" :geometry="foxObject.geometry" :material="myMaterial" />
+          <TresAmbientLight :intensity="1" />
+        </TresCanvas>
+      </Suspense>
     </div>
-  </template>
+</template>
   
-  <script>
-  import { TresCanvas } from '@tresjs/core'
-  
-  export default {
+<script>
+import { TresCanvas, useLoader } from '@tresjs/core';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { MeshStandardMaterial } from 'three';
+
+
+export default {
+    data() {
+      return {
+        foxObject: null,
+        myMaterial: new MeshStandardMaterial({ color: 0xffaa00 })
+
+      };
+    },
     components: {
       TresCanvas
-      // ... other TresJS components
+    },
+    async mounted() {
+      this.foxObject = await useLoader(OBJLoader, '/3d/fox.obj');
+
     }
-  }
-  </script>
+}
+</script>
   
- <style scoped>
+<style scoped>
 .tres-container {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 </style>

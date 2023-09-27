@@ -1,20 +1,20 @@
 <template>
   <div class="container">
-    <base-card
+    <viz-panel
       v-for="graph in graphs"
       :key="graph.id"
       :class="`graph${graph.id}`"
-      mode="outline-vizpane"
+      :mode="`finished${graph.id}`"
       @click="toggleSelected(graph.id)"
-    ></base-card>
+    ></viz-panel>
   </div>
 </template>
 
 <script>
-import BaseCard from '../../components/ui/BaseCard.vue';
+import VizPanel from './VizPanels/VizPanel.vue';
 export default {
   components: {
-    BaseCard,
+    VizPanel,
   },
   computed: {
     graphs() {
