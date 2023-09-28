@@ -129,9 +129,9 @@ export default {
     repeating-linear-gradient(
       -45deg,
       #f7ddd4, 
-      #f7ddd4 20px, 
-      #fefbfa 20px, 
-      #fefbfa 40px
+      #f7ddd4 10px, 
+      #fefbfa 10px, 
+      #fefbfa 20px
     );
     animation: gradientAnimation 30s infinite linear; 
 }
