@@ -1,38 +1,31 @@
 <template>
-    <div class="tres-container">
+    <TresCanvas clear-color="#82DBC5" shadows alpha>
+      <TresPerspectiveCamera :position="[11, 11, 11]" />
+      <OrbitControls />
       <Suspense>
-        <TresCanvas clear-color="#82DBC5">
-          <TresPerspectiveCamera :position="[3, 3, 3]" :look-at="[0, 0, 0]" />
-          <TresMesh v-if="foxObject" :geometry="foxObject.geometry" :material="myMaterial" />
-          <TresAmbientLight :intensity="1" />
-        </TresCanvas>
+        <GLTFModel :path="modelPath" draco />
       </Suspense>
-    </div>
-</template>
+      <TresDirectionalLight :position="lightPosition" :intensity="lightIntensity" cast-shadow />
+    </TresCanvas>
+  </template>
   
-<script>
-import { TresCanvas, useLoader } from '@tresjs/core';
-import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-import { MeshStandardMaterial } from 'three';
-
-
-export default {
+  <script>
+  import { OrbitControls, GLTFModel } from '@tresjs/cientos';
+  
+  export default {
+    components: {
+      OrbitControls,
+      GLTFModel
+    },
     data() {
       return {
-        foxObject: null,
-        myMaterial: new MeshStandardMaterial({ color: 0xffaa00 })
-
+        modelPath: "/models/AkuAku.gltf",
+        lightPosition: [-4, 8, 4],
+        lightIntensity: 1.5
       };
-    },
-    components: {
-      TresCanvas
-    },
-    async mounted() {
-      this.foxObject = await useLoader(OBJLoader, '/3d/fox.obj');
-
     }
-}
-</script>
+  }
+  </script>
   
 <style scoped>
 .tres-container {
