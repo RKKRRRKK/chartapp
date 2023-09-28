@@ -137,7 +137,7 @@ textarea:focus {
 
 .grab {
   margin-left: 10%;
-  margin-top: 30vh;
+  margin-top: 20vh;
   font-size: 1.5rem;
 }
 

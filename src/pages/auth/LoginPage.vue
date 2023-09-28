@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <user-auth class="login"></user-auth>
+    <div class="gradient"></div>
   </div>
 </template>
 
@@ -15,12 +16,6 @@ export default {
 </script>
 
 <style scoped>
-.tres-logo {
-  overflow: hidden; /* To ensure no overflow from the canvas */
-  margin: 2rem; /* Center it horizontally and add some margin on top and bottom */
-  background-color: black;
-  margin-top: 10rem;
-}
 
 .login {
     width: 50%;
@@ -28,8 +23,42 @@ export default {
 
 .container {
     display: flex;
-    flex-direction: row;
-    height: 60vh;
+    flex-direction: column;
+    height: 95.5vh;
     width: 100vw;
+    background-color: #fefbfa;
+    background-image: url('../../../public/peaks.svg');
+    justify-content: space-between;
+}
+
+
+
+@keyframes flicker {
+  0% {
+    opacity: 0.8;
+    filter: hue-rotate(0deg);
+    scale: 1
+
+  }
+  25% {
+    opacity: 0.8;
+    filter: hue-rotate(-10deg);
+    scale: 1.1;
+
+  }
+
+
+  65% {
+    opacity: 0.6;
+    filter: hue-rotate(10deg);
+    scale: 0.9
+ 
+  }
+
+  100% {
+    opacity: 0.8;
+    filter: hue-rotate(0deg);
+    scale: 1;
+  }
 }
 </style>
