@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="sankey" id="sankey_chart">
-      <!-- Show spinner while loading -->
       <base-spinner class="spinner" v-if="isLoading"></base-spinner>
 
       <GChart
