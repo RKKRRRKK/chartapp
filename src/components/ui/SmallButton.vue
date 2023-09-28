@@ -33,7 +33,7 @@ export default {
 button,
 a {
   text-decoration: none;
-  padding: 0.2rem 0.5rem;
+  padding: 0.2rem 0.4rem;
   font: inherit;
   background-color: #df5020;
   border: 1px solid #ffffff;
@@ -42,6 +42,7 @@ a {
   display: flex;
   border-radius: 0.8rem;
   justify-content: space-between;
+  align-items: center;
 }
 
 a:hover,

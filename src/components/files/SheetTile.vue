@@ -28,16 +28,17 @@
                 : ''
             "
           >
-            save
+            <span class="material-symbols-outlined">save</span>
           </small-button>
-          <small-button
+
+          <!-- <small-button
             mode="outline"
             link
             to="/"
             :class="{ disabled: !isActive }"
             :disabled="!isActive"
-            >tbd button</small-button
-          >
+            ></small-button
+          > -->
         </div>
       </li>
     </base-card>
@@ -57,9 +58,9 @@ export default {
 
   methods: {
     confirmSave(inputValue) {
-    this.inputName = inputValue;
-    this.save();
-  },
+      this.inputName = inputValue;
+      this.save();
+    },
     deleteFile() {
       this.$emit('delete-file', this.id);
     },
@@ -83,7 +84,7 @@ export default {
       const activeSheet = this.$store.getters['sheets/getActiveSheetFix'];
       const userId = this.$store.getters['userId'];
       if (userId) {
-        activeSheet['inputName'] = this.inputName
+        activeSheet['inputName'] = this.inputName;
         console.log('save sheet: ', activeSheet, userId);
         this.$store.dispatch('sheets/saveSheet', {
           activeSheet: activeSheet,
@@ -137,8 +138,9 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 2rem;
-  margin-top: -1rem;
+  padding-bottom: 1.5rem;
+  padding-top: 0rem;
+  margin-top: -0.7rem;
 }
 
 h4 {
@@ -149,12 +151,14 @@ h4 {
   margin: 0;
   font-size: 0.8rem;
   color: white;
-  max-width: calc(100% - 1rem); /* Assuming 1rem is the width of your button, adjust as necessary */
+  max-width: calc(
+    100% - 1rem
+  ); /* Assuming 1rem is the width of your button, adjust as necessary */
 }
 
 .delete {
   flex-shrink: 0;
-  scale: 0.7 /* Prevents the button from shrinking */
+  scale: 0.7; /* Prevents the button from shrinking */
   /* ...other styles */
 }
 </style>

@@ -102,16 +102,20 @@ export default {
   justify-content: center;
   position: relative;
   background-color: #fefbfa;
-  height: 100vh;
+  align-items: flex-start;
 }
 .sheets {
+  margin-top: 1rem;
   background-color: #fefbfa;
-  height: 98%;
+  min-height: 15%;
   width: 90%;
   border-radius: 25px;
   border-color: #f7ddd4;
   border-width: 0.25rem;
   border-style: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 ul {
@@ -119,15 +123,14 @@ ul {
   flex-direction: column;
   padding: 0;
   width: 90%;
-  margin-left: 0.5rem;
 }
 
 .add {
-  text-align: center;
   margin-top: -2.5rem;
   font-size: 2rem;
   color: #df5020;
   cursor: pointer;
+  scale: 1.2
 }
 
 .add:hover,

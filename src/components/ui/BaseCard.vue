@@ -33,7 +33,7 @@ export default {
   margin-bottom: 2rem;
   background-color: transparent;
   cursor: pointer;
-  background: linear-gradient(to bottom, #df5020 0%, #df5020 30%, transparent 30%, transparent 100%)
+  background: linear-gradient(to bottom, #df5020 0%, #df5020 30%, transparent 30%, transparent 100%);
 }
 
 .outline:hover {
@@ -48,7 +48,7 @@ export default {
       #fefbfa 20px, 
       #fefbfa 40px
     );
-  animation: gradientAnimation 15s infinite linear;  /* Apply the animation */
+  animation: gradientAnimation 30s infinite linear;  /* Apply the animation */
 }
 
 .card {
@@ -68,7 +68,8 @@ export default {
       #fefbfa 20px
     );
   cursor: pointer;
-  opacity: 50%;
+  opacity: 25%;
+  transition: 0.5s ease-out;
 }
 
 .card:hover {
@@ -87,9 +88,10 @@ export default {
       #fefbfa 10px, 
       #fefbfa 20px
     );
-    animation: gradientAnimation 15s infinite linear; 
+    animation: gradientAnimation 30s infinite linear; 
   cursor: pointer;
-  opacity: 75%;
+  opacity: 50%;
+  transition: 0.5s ease-out;
 }
 
 .active{
@@ -111,6 +113,7 @@ export default {
     );
     animation: gradientAnimation 15s infinite linear; 
   cursor: default;
+  transition: 1s ease-in
   
   
 }
@@ -120,7 +123,7 @@ export default {
   padding: 1rem;
   max-width: 40rem;
   margin-bottom: 2rem;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
   background: 
     linear-gradient(to bottom, #df5020 0%, #df5020 30%, transparent 30%, transparent 100%),
     repeating-linear-gradient(
@@ -130,7 +133,7 @@ export default {
       #fefbfa 20px, 
       #fefbfa 40px
     );
-    animation: gradientAnimation 15s infinite linear; 
+    animation: gradientAnimation 30s infinite linear; 
 }
 
 
@@ -139,10 +142,11 @@ export default {
 
 @keyframes gradientAnimation {
   0% {
-    background-position: 0 0, 0 0;
+    background-size: 100% 100%, 100% 100%;
   }
   100% {
-    background-position: 0 0, 800px 0;
+    background-size: 100% 100%, 500% 500%;
+
   }
 }
 

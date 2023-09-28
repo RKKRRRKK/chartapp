@@ -1,6 +1,6 @@
 <template>
-  <the-header></the-header>
-  <router-view></router-view>
+  <the-header class="the_header"></the-header>
+  <router-view class="the_router"></router-view>
 </template>
 
 <script>

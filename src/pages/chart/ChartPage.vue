@@ -45,6 +45,7 @@ export default {
 .sections {
   display: flex;
   justify-content: space-between;
+  height: 95.5vh;
 }
 
 .vizpane {

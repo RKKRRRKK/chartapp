@@ -5,7 +5,7 @@
       :key="graph.id"
       :class="`graph${graph.id}`"
       :mode="`finished${graph.id}`"
-      @click="toggleSelected(graph.id)"
+      @click="graph.id === 1 ? toggleSelected(graph.id) : null"
     ></viz-panel>
   </div>
 </template>
@@ -33,18 +33,23 @@ export default {
 
 <style scoped>
 .container {
-  padding: 2rem;
+  padding: 15rem;
+  padding-top: 5rem;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-content: flex-start;
+  justify-content:space-evenly;
+  align-content: stretch;
+  gap: 5rem;
+  height: 100%;
+
 }
 
 .graph1,
 .graph2,
 .graph3,
 .graph4 {
-  height: 40%;
-  width: 40%;
+  height: 30rem;
+  width: 40rem;
+  flex: 1 1  calc(50% - 5rem);; 
 }
 </style>
