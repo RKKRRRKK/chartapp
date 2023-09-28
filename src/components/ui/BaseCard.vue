@@ -69,7 +69,7 @@ export default {
     );
   cursor: pointer;
   opacity: 25%;
-  transition: 0.5s ease-out;
+  transition: 0.33s ease-out;
 }
 
 .card:hover {
@@ -91,7 +91,7 @@ export default {
     animation: gradientAnimation 30s infinite linear; 
   cursor: pointer;
   opacity: 50%;
-  transition: 0.5s ease-out;
+  transition: 0.33s ease-out;
 }
 
 .active{
@@ -113,7 +113,7 @@ export default {
     );
     animation: gradientAnimation 15s infinite linear; 
   cursor: default;
-  transition: 1s ease-in
+  transition: 0.33s ease-in
   
   
 }
