@@ -27,28 +27,33 @@ export default {
 <style scoped>
 .outline {
   border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 1rem;
   max-width: 40rem;
   margin-bottom: 2rem;
   background-color: transparent;
   cursor: pointer;
   background: linear-gradient(to bottom, #df5020 0%, #df5020 30%, transparent 30%, transparent 100%);
+  opacity: 70%;
+  transition: 0.33s ease-out
 }
 
 .outline:hover {
   background-color: #DFB020;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   background-size: 100% 200%, 100% 40px; /* Set the size of the first gradient to be twice its height */
   background:
     linear-gradient(to bottom, #df5020 0%, #df5020 30%, transparent 30%, transparent 100%),
     repeating-linear-gradient(
       -45deg,
       #f7ddd4, 
-      #f7ddd4 20px, 
-      #fefbfa 20px, 
-      #fefbfa 40px
+      #f7ddd4 10px, 
+      #fefbfa 10px, 
+      #fefbfa 20px
     );
-  animation: gradientAnimation 30s infinite linear;  /* Apply the animation */
+  animation: gradientAnimation 60s infinite linear; 
+  opacity: 80%;
+  transition: 0.33s ease-out
 }
 
 .card {
@@ -133,7 +138,8 @@ export default {
       #fefbfa 10px, 
       #fefbfa 20px
     );
-    animation: gradientAnimation 30s infinite linear; 
+    animation: gradientAnimation 30s infinite linear;
+    transition: 0.33s ease-in  
 }
 
 
