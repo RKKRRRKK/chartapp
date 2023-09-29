@@ -30,10 +30,10 @@ export default {
   background: 
     repeating-linear-gradient(
       45deg,
-      #fefbfa, 
-      #f7ddd4 1px, 
-      #fefbfa 3px, 
-      #fefbfa 8px
+      #ffffff, 
+      #fdede7 1px, 
+      #ffffff 3px, 
+      #ffffff 8px
     );
   width: 80%;
   display: flex;

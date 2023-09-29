@@ -63,6 +63,14 @@ export default {
   border-color: #f7ddd4;
   border-left-width: 0.4rem;
   border-left-style:solid;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      #ffffff, 
+      #fdede7 1px, 
+      #ffffff 3px, 
+      #ffffff 8px
+    );
 }
 
 .sidebar {
@@ -70,11 +78,11 @@ export default {
   background-color: #fffcfa;
   background: 
     repeating-linear-gradient(
-      -45deg,
-      #fefbfa, 
-      #f7ddd4 1px, 
-      #fefbfa 3px, 
-      #fefbfa 8px
+      45deg,
+      #ffffff, 
+      #fdede7 1px, 
+      #ffffff 3px, 
+      #ffffff 8px
     );
   border-color: #f7ddd4;
   border-right-width: 0.4rem;
