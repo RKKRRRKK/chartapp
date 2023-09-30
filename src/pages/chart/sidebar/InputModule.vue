@@ -6,6 +6,7 @@
         style="display: none"
         type="file"
         ref="fileInput"
+        accept=".csv"
         @input="handleFileUpload"
       />
       <base-button class="button" v-show="state" @click="upload"
