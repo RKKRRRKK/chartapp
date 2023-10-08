@@ -14,32 +14,48 @@
       </ul>
     </nav>
     <div class="login">
-    <router-link class=logo to="/login">
+      <div class="logo"  @click="toggleDropdown">
         <span class="material-symbols-outlined">account_circle</span>
-    </router-link>
-</div>
-
+      </div>
+      <div v-if="showDropdown" class="dropdown">
+        <router-link v-if="isLoggedIn" @click="logout" to="/login">Log-out</router-link>
+        <router-link @click="toggleDropdown()" v-else to="/login">Log-in</router-link>
+      </div>
+    </div>
   </header>
 </template>
 
 <script>
 export default {
-
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    }
+  },
+  data() {
+    return {
+      showDropdown: false
+    };
+  },
   methods: {
+
     getFiles() {
       const userId = this.$store.getters['userId'];
       if (userId) {
       this.$store.dispatch('sheets/fetchFiles')}
+      },
+
+    toggleDropdown() {
+      this.showDropdown = !this.showDropdown;
+    },
+
+    logout() {
+      this.$store.dispatch('logout');
+      this.showDropdown = false;
     }
-
-
   }
-
-
 }
-
 </script>
-
 
 
 
@@ -131,10 +147,8 @@ li {
 .logo {
     width: 3rem;
     position: absolute;
-    right: 0px;
-    margin-right: 2.5rem;
-    margin-top: -1.2rem;
-    scale: 2;
+    right: 0rem;
+    top: 1rem;
 }
 
 
@@ -146,6 +160,8 @@ li {
   'opsz' 24;
   color: #f7ddd4;
   border: none;
+  scale: 2;
+  cursor: pointer;
 }
 
 .material-symbols-outlined:hover {
@@ -160,7 +176,21 @@ li {
   }
 
   .logo.router-link-active .material-symbols-outlined {
-  color: #DFB020; /* or any other styles you want to apply */
+  color: #DFB020;
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  top: 4.5vh; 
+  background-color: #df5020;
+  border: 1px solid #f7ddd4;
+  border-radius: 4px;
+  z-index: 10;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 </style>

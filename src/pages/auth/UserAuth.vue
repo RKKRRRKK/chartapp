@@ -42,16 +42,16 @@ export default {
   computed: {
     submitButtonCaption() {
       if (this.mode === 'login') {
-        return 'Login';
+        return 'Log-in';
       } else {
-        return 'Signup';
+        return 'Sign-up';
       }
     },
     switchModeButtonCaption() {
       if (this.mode === 'login') {
-        return 'Signup instead';
+        return 'Sign-up instead';
       } else {
-        return 'Login instead';
+        return 'Log-in instead';
       }
     },
   },
