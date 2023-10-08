@@ -26,8 +26,8 @@
           <label
             >Font Size:
             <input
-              class="input"
-              type="number"
+              class="range"
+              type="range"
               v-model="fontSize"
               @input="updateFont"
             />
