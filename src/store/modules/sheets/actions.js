@@ -77,32 +77,33 @@ export default {
 
 
   async saveSheet(context, payload) {
-    const newFile = payload.activeSheet
-    console.log(payload.userId)
+    const newFile = payload.activeSheet;
+    const userId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
+    console.log(userId, " ", token);
+    
     const response = await fetch(
-      `https://graphingsite-default-rtdb.europe-west1.firebasedatabase.app/files/${payload.userId}.json`,
+      `https://graphingsite-default-rtdb.europe-west1.firebasedatabase.app/files/${userId}.json?auth=` + token,
       {
         method: 'POST',
         body: JSON.stringify(newFile)
       }
     );
-
+  
     const responseData = await response.json();
-
+  
     if (!response.ok) {
       const error = new Error(
         responseData.message || 'Failed to save data.'
       );
       throw error;
+    } else {
+      console.log("successfully sent to firebase")
     }
-    else console.log("sucessfully sent to firebase")
-
+  
     newFile.fireId = responseData.name;
     newFile.userId = payload.id;
-  
-
     //context.commit('ADD_ID', newFile);
-
   },
 
 
@@ -113,6 +114,7 @@ export default {
   async fetchFiles(context) {
     const userId = context.rootGetters.userId;
     const token = context.rootGetters.token;
+    console.log(userId, " ", token)
     const response = await fetch(
       `https://graphingsite-default-rtdb.europe-west1.firebasedatabase.app/files/${userId}.json?auth=` +
         token
