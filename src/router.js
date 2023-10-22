@@ -5,6 +5,10 @@ import SavedFile from './pages/saved/SavedFile.vue';
 import SankeyChart from './pages/chart/charts/SankeyChart.vue';
 import LoginPage from './pages/auth/LoginPage.vue';
 import store from './store/index.js';
+import frame1 from './pages/saved/iFrames/iFrameOne.vue';
+import frame2 from './pages/saved/iFrames/iFrameTwo.vue';
+import frame3 from './pages/saved/iFrames/iFrameThree.vue';
+import frame4 from './pages/saved/iFrames/iFrameFour.vue';
 
 
 const router = createRouter({
@@ -14,7 +18,11 @@ const router = createRouter({
     { path: '/chart', component: ChartPage },
     { path: '/chart/sankey', component: SankeyChart},
     {path: '/login', component: LoginPage, meta: {requiresNoAuth: true}},
-    {path: '/saved', component: SavedFile, meta: {requiresAuth: true}}
+    {path: '/saved', component: SavedFile, meta: {requiresAuth: true}},
+    {path: '/frame1', component: frame1, meta: {requiresAuth: false}},
+    {path: '/frame2', component: frame2, meta: {requiresAuth: false}},
+    {path: '/frame3', component: frame3, meta: {requiresAuth: false}},
+    {path: '/frame4', component: frame4, meta: {requiresAuth: false}},
       ]
 });
 

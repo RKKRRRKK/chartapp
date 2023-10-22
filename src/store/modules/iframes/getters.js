@@ -6,6 +6,11 @@ export default {
             return available.path;
         }
         else return false;
+    },
+
+    getFrameData(state, id) {
+        const iframe = state.iframes.find(iframe => iframe.id === id)
+        return iframe.data
     }
 
 

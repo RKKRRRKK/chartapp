@@ -35,7 +35,7 @@ export default {
 
     currentFrame() {
       const frame = this.$store.state.iframes.iframes.find(
-        (frame) => frame.id == 3)
+        (frame) => frame.id == 4)
         return frame 
     },
 

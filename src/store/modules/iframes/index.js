@@ -12,6 +12,7 @@ export default {
         path:'/iframe1',
         taken:false,
         data:{},
+        settings:{},
         type:'Sankey',
         },
           {
@@ -19,6 +20,7 @@ export default {
         path:'/iframe2',
         taken:false,
         data:{},
+        settings:{},
         type:'Sankey',
         },
           {
@@ -26,6 +28,7 @@ export default {
         path:'/iframe3',
         taken:false,
         data:{},
+        settings:{},
         type:'Sankey',
         },
           {
@@ -33,6 +36,7 @@ export default {
         path:'/iframe4',
         taken:false,
         data:{},
+        settings:{},
         type:'Sankey',
         },
       ],
