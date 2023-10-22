@@ -20,10 +20,21 @@ export default {
       
         // If the deletion was successful, you can update your local state
         context.commit('DELETE_FILE', id);
+      },
+
+
+      assignFrame(state, payload) {
+        const file = state.files.find((file) => file.id === payload.fileID);
+        file.fileFramed = payload.frame
+      },
+
+      assignFileData(state, payload) {
+        const file = state.files.find((file) => file.id === payload.fileID);
+        data = file.inputData
+        frame = file.frame
+        commit('iframes/assignFileData', {data: data, frame: frame}, { root: true })
       }
-
-
-
+      
 
 
 

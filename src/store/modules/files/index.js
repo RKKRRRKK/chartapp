@@ -15,6 +15,7 @@ export default {
           settings: null,
           inputData: null,
           fileActive: null,
+          fileFramed: false,
         },
       ],
     };

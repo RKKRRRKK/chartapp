@@ -139,6 +139,7 @@ export default {
         settings: responseData[key].settings,
         inputData: responseData[key].inputData,
         fileActive: null, 
+        fileFramed: false,
 
       };
       files.push(file);
