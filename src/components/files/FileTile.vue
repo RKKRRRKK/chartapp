@@ -35,11 +35,10 @@
           >edit</base-button
         >
         <base-button
+        @click="getFramed"
           :class="{ disabled: !isActive }"
           :disabled="!isActive"
           mode="outline"
-          link
-          :to="isActive ? iframePath : ''"
           >i-frame</base-button
         >
       </div>
@@ -48,6 +47,8 @@
 </template>
 <script>
 export default {
+
+
   data() {
   return {
     confirmDelete: false
@@ -65,9 +66,6 @@ export default {
       const minutes = String(dateObj.getMinutes()).padStart(2, '0');
       return `${year}-${month}-${day} ${hours}:${minutes}`;
     },
-    iframePath() {
-      return '/saved/' + this.id + '/frame';
-    },
     card() {
       console.log('is this being propagated? FileTile.vue');
       const activeFileId = this.$store.getters['files/getActive'];
@@ -81,6 +79,27 @@ export default {
       const activeFileId = this.$store.getters['files/getActive'];
       return this.id == activeFileId;
     },
+
+    getActive() {
+      const activeFileId = this.$store.getters['files/getActive'];
+      return activeFileId
+    },
+
+    isFramed() {
+      const framedFileId = this.$store.getters['files/getFramedFileId'];
+      return this.id == framedFileId;
+    },
+
+    getFrame() {
+      const framedFileId = this.$store.getters['files/getFrame'];
+      return framedFileId;
+    },
+
+    checkFrames() {
+      console.log("checkframes triggered at FileTile.vue")
+      const availFrame = this.$store.getters['iframes/checkFrames']
+      return availFrame;
+    }
   },
   methods: {
     hydrateSheet() {
@@ -104,6 +123,23 @@ export default {
     }
 },
 
+  getFramed() {
+    if (this.isActive && this.isFramed) 
+    {
+    this.$router.push(`/${this.getFrame}`)
+    console.log(`SOMETHING SHOULD BE HERE/${this.getFrame}`)
+  }
+    else (this.isActive && !this.isFramed)
+    {
+      if (this.checkFrames) {
+       this.$store.dispatch('files/assignFileData', {frame: this.checkFrames, fileID: this.getActive})
+       this.$store.dispatch('files/assignFrame', {frame: this.checkFrames, fileID: this.getActive})
+       this.getFramed()
+      }
+      else console.log("no frame is available")
+    }
+  },
+
 toggleActive() {
     this.$store.commit('files/toggleActive', { id: this.id });
     console.log('click: id:', this.id);
@@ -119,6 +155,7 @@ deleteFile() {
 },
 },
 }
+
 </script>
 
 <style scoped>

@@ -4,6 +4,7 @@ import filesModule from './modules/files/index.js';
 import sheetsModule from './modules/sheets/index.js';
 import graphsModule from './modules/graphs/index.js';
 import authModule from './modules/auth/index.js';
+import iFramesModule from './modules/iframes/index.js';
 
 const store = createStore({
     modules: {
@@ -11,6 +12,7 @@ const store = createStore({
         sheets: sheetsModule,
         graphs: graphsModule,
         auth: authModule,
+        iframes: iFramesModule,
     }
 });
 
