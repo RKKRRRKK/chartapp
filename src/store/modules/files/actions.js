@@ -28,11 +28,12 @@ export default {
         file.fileFramed = payload.frame
       },
 
-      assignFileData(state, payload) {
+      assignFileData({commit,state}, payload) {
         const file = state.files.find((file) => file.id === payload.fileID);
-        data = file.inputData
-        frame = file.frame
-        commit('iframes/assignFileData', {data: data, frame: frame}, { root: true })
+        const data = file.inputData;
+        const settings = file.settings;
+        const frame = file.frame;
+        commit('iframes/assignFileData', {data: data, frame: frame, settings: settings}, { root: true })
       }
       
 

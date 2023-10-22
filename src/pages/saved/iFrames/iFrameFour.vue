@@ -73,7 +73,7 @@ export default {
       return 0; // default value
     },
     colorMode() {
-      if (his.currentFrame.settings) {
+      if (this.currentFrame.settings) {
         return this.currentFrame.settings.colorMode;
       }
       return 'none'; // default value

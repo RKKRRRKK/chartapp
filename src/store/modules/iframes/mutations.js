@@ -4,6 +4,7 @@ export default {
         const frame = state.iframes.find((iframe) => iframe.path === payload.frame);
         if (frame) {
             frame.data = payload.data
+            frame.settings= payload.settings
         }
     }
 
