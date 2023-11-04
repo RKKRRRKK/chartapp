@@ -23,17 +23,18 @@ export default {
       },
 
 
-      assignFrame(state, payload) {
+      assignFrame({state}, payload) {
         const file = state.files.find((file) => file.id === payload.fileID);
         file.fileFramed = payload.frame
       },
 
       assignFileData({commit,state}, payload) {
+        console.log("assingFileData1 triggered")
         const file = state.files.find((file) => file.id === payload.fileID);
         const data = file.inputData;
         const settings = file.settings;
-        const frame = file.frame;
-        commit('iframes/assignFileData', {data: data, frame: frame, settings: settings}, { root: true })
+        const frame = file.fileFramed;
+        commit('iframes/assignFileData2', {data: data, frame: frame, settings: settings}, { root: true })
       }
       
 

@@ -1,12 +1,8 @@
 <template>
     <div class="container">
       <div class="sankey" id="sankey_chart">
-        <base-spinner class="spinner" v-if="isLoading"></base-spinner>
-  
         <GChart
           v-if="
-            !isLoading &&
-            googleChartsLoaded &&
             formattedChartData &&
             formattedChartData.length > 1
           "
@@ -20,11 +16,7 @@
   
   <script>
   export default {
-    data() {
-      return {
-        googleChartsLoaded: false,
-      };
-    },
+
     mounted() {
       this.$nextTick(() => {
         if (window.google && window.google.charts) {
@@ -40,55 +32,49 @@
     },
   
     computed: {
-      activeSheet() {
-        const sheet = this.$store.state.sheets.sheets.find(
-          (sheet) => sheet.active
-        );
-        //console.log('Active sheet:', sheet);
-        return sheet;
+
+      currentFrame() {
+        const frame = this.$store.state.iframes.iframes.find(
+          (frame) => frame.id == 1)
+          return frame 
       },
+
       formattedChartData() {
-        if (this.activeSheet && this.activeSheet.inputData.length > 0) {
+        if (this.currentFrame.data.length > 0) {
           const header = [['From', 'To', 'Weight']];
-          const rows = this.activeSheet.inputData;
-          //   console.log('Formatted chart data:', header.concat(rows));
+          const rows = this.currentFrame.data;
           return header.concat(rows);
         }
-       // console.log('No formatted chart data');
         return [];
       },
       nodePadding() {
-        if (this.activeSheet && this.activeSheet.settings) {
-          //  console.log(
-          //    'this active sheet node padding: ',
-          //    this.activeSheet.settings.nodePadding
-          //   );
-          return this.activeSheet.settings.nodePadding || 10;
+        if (this.currentFrame.settings) {
+          return this.currentFrame.settings.nodePadding || 10;
         }
         return 80;
       },
   
       colors() {
-        if (this.activeSheet && this.activeSheet.settings) {
-          return this.activeSheet.settings.colors;
+        if (this.currentFrame.settings) {
+          return this.currentFrame.settings.colors;
         }
         return []; // default value
       },
       nodeWidth() {
-        if (this.activeSheet && this.activeSheet.settings) {
-          return this.activeSheet.settings.nodeWidth;
+        if (this.currentFrame.settings) {
+          return this.currentFrame.settings.nodeWidth;
         }
         return 0; // default value
       },
       fontSize() {
-        if (this.activeSheet && this.activeSheet.settings) {
-          return this.activeSheet.settings.fontSize;
+        if (this.currentFrame.settings) {
+          return this.currentFrame.settings.fontSize;
         }
         return 0; // default value
       },
       colorMode() {
-        if (this.activeSheet && this.activeSheet.settings) {
-          return this.activeSheet.settings.colorMode;
+        if (this.currentFrame.settings) {
+          return this.currentFrame.settings.colorMode;
         }
         return 'none'; // default value
       },
@@ -110,30 +96,9 @@
           },
         };
       },
-  
-      isLoading() {
-        return this.activeSheet ? this.activeSheet.inputLoading : null;
-      },
-      hasInput() {
-        return this.activeSheet ? this.activeSheet.inputData : null;
-      },
     },
+  }
   
-    watch: {
-      isLoading: {
-        handler(newVal) {
-          if (newVal === false) {
-         //   console.log('isLoading changed to false');
-          }
-        },
-        deep: true, // Add this line
-      },
-      hasInput() {
-          this.$store.dispatch('sheets/isLoading', false);
-      //    console.log('hasInput triggered');
-        }
-    },
-  };
   </script>
   
   <style scoped>
@@ -143,26 +108,22 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background-size: 40px 40px;
-    background-image: linear-gradient(
-        to right,
-        rgb(245, 235, 235) 1px,
-        transparent 1px
-      ),
-      linear-gradient(to bottom, rgb(245, 235, 235) 1px, transparent 1px);
+    background-color: white;
   }
   
   .sankey {
-    width: 80%; 
-    height: 80%; 
+    width: 100%; 
+    height: 100%; 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -15rem;
   }
   
   .spinner {
     transform: scale(4);
   }
+
+
+  
   </style>
   

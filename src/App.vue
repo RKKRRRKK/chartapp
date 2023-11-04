@@ -1,5 +1,5 @@
 <template>
-  <the-header></the-header>
+  <the-header v-if="!hideHeader"></the-header>
   <router-view v-slot="slotProps">
     <transition name="route" mode="out-in">
       <component :is="slotProps.Component"></component>
@@ -14,8 +14,17 @@ import TheHeader from './components/layout/TheHeader.vue';
 export default {
   components: {
     TheHeader
-  }  
+  }, 
+
+computed: {
+
+  hideHeader() {
+      return this.$route.meta.hideHeader;
+    }
 }
+};
+
+
 </script>
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");

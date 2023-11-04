@@ -98,6 +98,7 @@ export default {
     checkFrames() {
       console.log("checkframes triggered at FileTile.vue")
       const availFrame = this.$store.getters['iframes/checkFrames']
+      console.log("checkframes", availFrame)
       return availFrame;
     }
   },
@@ -123,22 +124,42 @@ export default {
     }
 },
 
-  getFramed() {
-    if (this.isActive && this.isFramed) 
-    {
-    this.$router.push(`/${this.getFrame}`)
-    console.log(`SOMETHING SHOULD BE HERE/${this.getFrame}`)
-  }
-    else (this.isActive && !this.isFramed)
-    {
-      if (this.checkFrames) {
-       this.$store.dispatch('files/assignFileData', {frame: this.checkFrames, fileID: this.getActive})
-       this.$store.dispatch('files/assignFrame', {frame: this.checkFrames, fileID: this.getActive})
-       this.getFramed()
-      }
-      else console.log("no frame is available")
+async getFramed() {
+  console.log(`isActive: ${this.isActive}, isFramed: ${this.isFramed}`);
+
+  if (this.isActive && this.isFramed) {
+    console.log('Routing to frame...');
+    try {
+      await this.$router.push(`${this.getFrame}`);
+    } catch (error) {
+      console.error('Router navigation failed', error);
     }
-  },
+  } else if (this.isActive && !this.isFramed) {
+    if (this.checkFrames) {
+      try {
+        console.log('Assigning frame...');
+        await this.$store.dispatch('files/assignFrame', { frame: this.checkFrames, fileID: this.getActive });
+        console.log('assigned', this.checkFrames)
+        await this.$store.dispatch('files/assignFileData', { frame: this.checkFrames, fileID: this.getActive });
+
+        // Recheck isFramed after dispatching
+        console.log(`Rechecking after dispatch: isFramed: ${this.isFramed}`);
+        if (!this.isFramed) {
+          console.log('Frame assignment seems to have failed, not rerunning getFramed.');
+        }
+        else if (this.isFramed) {
+          await this.getFramed()
+        }
+      } catch (error) {
+        console.error("An error occurred during the frame assignment.", error);
+      }
+    } else {
+      console.log("No frame is available");
+    }
+  } else {
+    console.log('Neither active nor framed conditions met.');
+  }
+},
 
 toggleActive() {
     this.$store.commit('files/toggleActive', { id: this.id });

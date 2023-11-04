@@ -19,10 +19,10 @@ const router = createRouter({
     { path: '/chart/sankey', component: SankeyChart},
     {path: '/login', component: LoginPage, meta: {requiresNoAuth: true}},
     {path: '/saved', component: SavedFile, meta: {requiresAuth: true}},
-    {path: '/frame1', component: frame1, meta: {requiresAuth: false}},
-    {path: '/frame2', component: frame2, meta: {requiresAuth: false}},
-    {path: '/frame3', component: frame3, meta: {requiresAuth: false}},
-    {path: '/frame4', component: frame4, meta: {requiresAuth: false}},
+    { path: '/iframe1', component: frame1, meta: { requiresAuth: false, hideHeader: true }},
+    { path: '/iframe2', component: frame2, meta: { requiresAuth: false, hideHeader: true }},
+    { path: '/iframe3', component: frame3, meta: { requiresAuth: false, hideHeader: true }},
+    { path: '/iframe4', component: frame4, meta: { requiresAuth: false, hideHeader: true }},
       ]
 });
 
